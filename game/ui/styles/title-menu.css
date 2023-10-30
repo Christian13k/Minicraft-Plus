@@ -1,0 +1,307 @@
+::selection {
+	background: transparent;
+}
+
+#title-panorama {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	font-family: Arial, sans-serif;
+	background: url('https://minicraft-plus.klenckstudios.repl.co/game/ui/styles/textures/panorama.png'), #000;
+	background-size: cover;
+	background-position: 0%;
+	animation: panorama 60s infinite;
+	animation-timing-function: ease-in-out;
+	overflow: scroll;
+}
+
+#title-panorama::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+
+#minicraft-game-icon-in-panorama {
+	position: relative;
+	top: 10px;
+	width: 96%;
+	border-radius: 3px;
+	z-index: 2;
+	transition: 0.3s linear;
+	pointer-events: none;
+}
+
+#loader-in-panorama {
+	position: absolute;
+	top: 49%;
+	left: 49%;
+	width: 3%;
+	border-radius: 3px;
+	z-index: 2;
+	image-rendering: pixelated;
+	display: none;
+	pointer-events: none;
+}
+
+#blur {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	backdrop-filter: blur(10px);
+	opacity: 0;
+	transition: opacity 0.3s linear;
+	display: none;
+}
+
+#title-menu {
+	position: fixed;
+	bottom: 50%;
+	transform: translate(0, 50%);
+	border-radius: 6px;
+	left: 10px;
+	width: 20%;
+	height: 98%;
+	font-family: Arial, sans-serif;
+	background: rgba(0, 0, 0, 50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-wrap: nowrap;
+	align-content: center;
+	opacity: 100;
+	transition: 0.3s linear;
+	backdrop-filter: blur(10px);
+}
+
+#play-button {
+	position: relative;
+	top: 15px;
+	height: 48px;
+	margin: 11px;
+	border: none;
+	background: transparent;
+	transition: 0.3s linear;
+	cursor: pointer;
+	image-rendering: pixelated;
+	filter: saturate(0%);
+}
+
+#play-button img {
+	height: 48px;
+	pointer-events: none;
+}
+
+#play-button img:hover {
+	scale: 1.05;
+}
+
+#user-button {
+	position: absolute;
+	bottom: 2%;
+	left: 50%;
+	transform: translate(-50%);
+	height: 60px;
+	width: 70%;
+	border: solid 1px #4e5569;
+	background: transparent;
+	cursor: pointer;
+	background: #0e1525;
+	border-radius: 6px;
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: row;
+}
+
+#user-button:hover {
+	box-shadow: 0 0 0 1px #0079f2;
+}
+
+#user-button img {
+	position: relative;
+	left: -1px;
+	margin: 0;
+	height: 48px;
+	width: 48px;
+	pointer-events: none;
+	background-color: #2b3245;
+	border: solid 1px #3a425a;
+	border-radius: 3px;
+}
+
+#user-buttonText {
+	position: absolute;
+	top: 17px;
+	left: 64px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #f5f9fc;
+	pointer-events: none;
+}
+
+#user-buttonId {
+	position: absolute;
+	top: 34px;
+	left: 64px;
+	font-size: 10px;
+	font-weight: bold;
+	color: #5c6266;
+	pointer-events: none;
+}
+
+#underneath-menu {
+	position: absolute;
+	right: 0;
+	bottom: calc(0% - 10%);
+	width: calc(100% - 20%);
+	height: 10%;
+	font-family: Arial, sans-serif;
+	background: rgba(0, 0, 0, 10%);
+	backdrop-filter: blur(20px);
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	transition: 0.3s linear;
+	flex-direction: column;
+}
+
+#underneath-menu::-webkit-scrollbar {
+	width: 16px;
+	height: 0;
+}
+
+#underneath-menu::-webkit-scrollbar-thumb {
+	height: 56px;
+	border-radius: 8px;
+	border: 7px solid transparent;
+	background-clip: content-box;
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+p {
+	font-family: MinecraftTenV2, sans-serif;
+	text-align: center;
+	font-size: 10px;
+	color: #fff;
+}
+
+#profile-container {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 10%;
+	height: 5%;
+	font-family: Arial, sans-serif;
+	background: rgba(0, 0, 0, 50%);
+}
+
+#profile-img {
+	position: relative;
+	top: 50%;
+	right: 5px;
+	width: 4%;
+	height: 4%;
+}
+
+@media (max-width: 969px) {
+
+	#user-button {
+		position: absolute;
+		top: 50%;
+		transform: translate(0, -50%);
+		left: 2%;
+		height: 60px;
+		width: 60px;
+		border: solid 1px #4e5569;
+		cursor: pointer;
+		background: #0e1525;
+		border-radius: 6px;
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: center;
+		justify-content: center;
+		flex-direction: row;
+		align-content: center;
+	}
+
+	#user-button img {
+		left: 0;
+	}
+
+	#user-buttonText {
+		display: none;
+	}
+
+	#user-buttonId {
+		display: none;
+	}
+	
+	#play-button {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		height: 48px;
+		margin: 0;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		image-rendering: pixelated;
+		filter: saturate(0%);
+	}
+	
+	#underneath-menu {
+		position: absolute;
+		right: 0;
+		bottom: calc(0% - 10%);
+		width: 100%;
+		height: 10%;
+		font-family: Arial, sans-serif;
+		background: rgba(0, 0, 0, 10%);
+		backdrop-filter: blur(20px);
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		flex-direction: column;
+	}
+
+	#title-menu {
+		position: absolute;
+		left: 0;
+		bottom: 40px;
+		width: 100%;
+		height: 10%;
+		font-family: Arial, sans-serif;
+		background: rgba(0, 0, 0, 50%);
+		display: block;
+		opacity: 100;
+		transition: opacity 0.3s linear;
+	}
+
+	#minicraft-game-icon-in-panorama {
+		position: fixed;
+		pointer-events: none;
+		top: -870%;
+		left: 20%;
+		border-radius: 3px;
+		width: 60%;
+		z-index: 2;
+	}
+}
+
+@keyframes panorama {
+	0% {
+		background-position: 0% 0%;
+	}
+	50% {
+		background-position: 100% 100%;
+	}
+	100% {
+		background-position: 0% 0%;
+	}
+}
