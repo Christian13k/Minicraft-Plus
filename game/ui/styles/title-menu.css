@@ -9,7 +9,7 @@
 	width: 100%;
 	height: 100%;
 	font-family: Arial, sans-serif;
-	background: url('https://minicraft-plus.klenckstudios.repl.co/game/ui/styles/textures/panorama.png'), #000;
+	background: url('textures/panorama.png'), #000;
 	background-size: cover;
 	background-position: 0%;
 	animation: panorama 60s infinite;
