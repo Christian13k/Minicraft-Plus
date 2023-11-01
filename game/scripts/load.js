@@ -30,12 +30,12 @@ window.addEventListener('load', function () {
 		script2.src = 'game/scripts/save_world.js';
     document.head.appendChild(script2);
   });
-
+	
   var style1 = document.createElement('link');
   var style2 = document.createElement('link');
   var style3 = document.createElement('link');
 	var style4 = document.createElement('link');
-		script2.addEventListener('load', function () {
+	script2.addEventListener('load', function () {
     style1.href = 'game/ui/styles/title-menu.css';
     style1.rel = 'stylesheet';
     style1.type = 'text/css';
