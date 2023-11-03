@@ -23,6 +23,11 @@ audioElement.addEventListener("ended", function() {
 window.addEventListener('load', function () {
   var script1 = document.createElement('script');
   var script2 = document.createElement('script');
+	var script3 = document.createElement('script');
+	var loader_text = document.getElementById('loader-text');
+	var loader_in = document.getElementById('loader-in');
+
+	loader_text.textContent = "Carregando Scripts...";
 	script1.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
 	document.head.appendChild(script1);
 	
@@ -30,12 +35,19 @@ window.addEventListener('load', function () {
 		script2.src = 'game/scripts/save_world.js';
     document.head.appendChild(script2);
   });
+
+	script2.addEventListener('load', function () {
+		script3.src = 'game/scripts/profile/user.js';
+		loader_text.textContent = "Autenticando...";
+		document.head.appendChild(script3);
+	});
 	
   var style1 = document.createElement('link');
   var style2 = document.createElement('link');
   var style3 = document.createElement('link');
 	var style4 = document.createElement('link');
-	script2.addEventListener('load', function () {
+	script3.addEventListener('load', function () {
+		loader_text.textContent = "Carregando Estilos...";
     style1.href = 'game/ui/styles/title-menu.css';
     style1.rel = 'stylesheet';
     style1.type = 'text/css';
@@ -61,6 +73,8 @@ window.addEventListener('load', function () {
 	});
 
   style4.addEventListener('load', function () {
+		loader_text.textContent = "Carregando...";
+		loader_in.style.opacity = '0';
     var audio = document.getElementById("music");
     document.addEventListener("visibilitychange", function() {
       if (document.visibilityState === "visible") {
@@ -70,16 +84,14 @@ window.addEventListener('load', function () {
       }
     });
     setTimeout( function () {
-			audio.volume = 0;
+			audio.volume = 0.01;
 			audio.play();
       loader.style.opacity = "0";
 			loader.style.filter = "blur(50px)";
       document.title = "Início — Minicraft Plus";
+			loader_text.textContent = "";
       setTimeout( function () {
         loader.style.display = "none";
-				var script4 = document.createElement('script');
-				script4.src = 'game/scripts/profile/user.js';
-				document.head.appendChild(script4);
       }, 2500);
     }, 3000);
   });

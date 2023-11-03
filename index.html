@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="game/textures/ui/ico.png" type="image/png">
-	<link href="game/ui/styles/loader.css" rel="stylesheet" type="text/css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="game/textures/ui/ico.png" type="image/png" />
+	<link href="game/ui/styles/loader.css" rel="stylesheet" type="text/css" />
 </head>
 
 <style>
@@ -22,7 +22,7 @@
 </style>
 
 <body>
-	<img src="game/ui/styles/textures/open.png" id="loader-img" style="display: none;">
+	<img src="game/ui/styles/textures/open.png" id="loader-img" style="display: none;" />
 	<div id="minicraft-plus" style="display: none;">
 		<div>
 			<canvas id="jogo"></canvas>
@@ -41,19 +41,19 @@
 
 		<div id="title-panorama">
 			<div id="anchor"></div>
-			<img id="loader-in-panorama" src="game/textures/ui/loader.gif">
+			<img id="loader-in-panorama" src="game/textures/ui/loader.gif" />
 			<div id="blur"></div>
 			<div id="title-menu">
-				<img id="minicraft-game-icon-in-panorama" src="game/textures/ui/minecraft_title.png">
+				<img id="minicraft-game-icon-in-panorama" src="game/textures/ui/minecraft_title.png" />
 				<div>
 					<button id="play-button">
-						<img src="game/textures/ui/play.png">
+						<img src="game/textures/ui/play.png" />
 					</button>
 				</div>
 				<div>
 					<a id="user-buttonUrl" href="" onclick="">
 						<button id="user-button">
-							<img id="user-buttonImage" src="game/ui/styles/textures/Replit.svg">
+							<img id="user-buttonImage" src="game/ui/styles/textures/Replit.svg" />
 							<span id="user-buttonText">Conectando-se</span>
 							<span id="user-buttonId">ao Replit...</span>
 						</button>
@@ -66,7 +66,7 @@
 
 		<div id="replitLogin_Background">
 			<div id="replitLogin">
-				<img src="loader.svg" id="replitLogin_loader">
+				<img src="loader.svg" id="replitLogin_loader" />
 				<div id="replitLogin_text">Abrindo o Replit auth...</div>
 			</div>
 		</div>
@@ -74,20 +74,25 @@
 		<div id="loader">
 			<div id="open"></div>
 			<div>
-				<img id="minicraft-game-icon" src="game/textures/ui/minecraft_title.png">
+				<img id="minicraft-game-icon" src="game/textures/ui/minecraft_title.png" />
 			</div>
-			<div id="progress-bar">
+			<div id="progress">
+				<img id="loader-in" src="loader.svg" />
+				<div id="loader-text">Aguarde...</div>
+			</div>
+			</div>
+			<!--<div id="progress-bar">
 				<div id="progress"></div>
-			</div>
+			</div>-->
 			<div>
-				<img id="replit-icon" src="game/textures/ui/replit-logo.svg">
+				<img id="replit-icon" src="game/textures/ui/replit-logo.svg" />
 			</div>
 		</div>
 
 		<div name="audios">
 			<audio id="music">
-				<source src="game/textures/music/Beatoven.mp3" type="audio/mp3">
-				<source src="game/textures/music/Beatoven_7.mp3" type="audio/mp3">
+				<source src="game/textures/music/Beatoven.mp3" type="audio/mp3" />
+				<source src="game/textures/music/Beatoven_7.mp3" type="audio/mp3" />
 			</audio>
 			<audio id="gui" src="game/textures/music/release-4756c.ogg" type="audio/ogg"></audio>
 		</div>
