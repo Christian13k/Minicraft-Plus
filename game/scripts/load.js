@@ -20,6 +20,28 @@ audioElement.addEventListener("ended", function() {
   }, 2000); 
 });
 
+var style1 = document.createElement('link');
+var loader_text = document.getElementById('loader-text');
+var loader_textUser = document.getElementById('loader-textUser');
+
+const continueUploading = async () => {
+	const user = await getUserInfo();
+	if (user) {
+		loader_text.textContent = "Conectado como:";
+		loader_textUser.textContent = user.name;
+		style1.href = 'game/ui/styles/title-menu.css';
+		style1.rel = 'stylesheet';
+		style1.type = 'text/css';
+		document.head.appendChild(style1);
+		setTimeout( function () {
+			loader_text.textContent = "Carregando Estilos...";
+			loader_textUser.textContent = "";
+		}, 1000);
+	} else {
+		openLogin();
+	};
+}
+
 window.addEventListener('load', function () {
   var script1 = document.createElement('script');
   var script2 = document.createElement('script');
@@ -42,26 +64,10 @@ window.addEventListener('load', function () {
 		document.head.appendChild(script3);
 	});
 
-	var style1 = document.createElement('link');
   var style2 = document.createElement('link');
   var style3 = document.createElement('link');
 	var style4 = document.createElement('link');
-	
-	function continueUploading() {
-		if (user) {
-			loader_text.textContent = ('Conectado como:', user.name);
-			style1.href = 'game/ui/styles/title-menu.css';
-			style1.rel = 'stylesheet';
-			style1.type = 'text/css';
-			document.head.appendChild(style1);
-			setTimeout( function () {
-				loader_text.textContent = "Carregando Estilos...";
-			}, 1000);
-		} else {
-			openLogin();
-		};
-	}
-	
+
   style1.addEventListener('load', function () {
     style2.href = 'game/ui/styles/game.css';
     style2.rel = 'stylesheet';

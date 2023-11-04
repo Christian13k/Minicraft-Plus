@@ -104,6 +104,18 @@
 	pointer-events: none;
 }
 
+#loader-textUser {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	margin-top: 0;
+	font-size: 16px;
+	text-align: center;
+	color: #ffffff;
+	pointer-events: none;
+}
+
 #loader-in {
 	position: relative;
 	height: 30px;
