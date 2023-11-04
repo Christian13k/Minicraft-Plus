@@ -7,7 +7,7 @@ var replitLogin_Background = document.getElementById("replitLogin_Background");
 var replitLogin = document.getElementById("replitLogin");
 
 const authenticate = async () => {
-		const user = await getUserInfo();
+	const user = await getUserInfo();
 
 	if (user) {
 		console.log("Logged in as:", user.name);
@@ -26,6 +26,8 @@ const authenticate = async () => {
 		var script1 = document.createElement('script');
 		script1.src = 'game/scripts/open_world.js';
 		document.head.appendChild(script1);
+
+		continueUploading();
 		
 	} else {
 		console.log("Not logged in");
@@ -48,7 +50,7 @@ const authenticate = async () => {
 		setTimeout( function () {
 			document.title = "Login — Minicraft Plus";
 
-			openLogin()
+			openLogin();
 
 			function openLogin() {
 				window.addEventListener('message', authComplete);

@@ -37,22 +37,31 @@ window.addEventListener('load', function () {
   });
 
 	script2.addEventListener('load', function () {
-		script3.src = 'game/scripts/profile/user.js';
+		script3.src = 'game/scripts/user.js';
 		loader_text.textContent = "Autenticando...";
 		document.head.appendChild(script3);
 	});
-	
-  var style1 = document.createElement('link');
+
+	var style1 = document.createElement('link');
   var style2 = document.createElement('link');
   var style3 = document.createElement('link');
 	var style4 = document.createElement('link');
-	script3.addEventListener('load', function () {
-		loader_text.textContent = "Carregando Estilos...";
-    style1.href = 'game/ui/styles/title-menu.css';
-    style1.rel = 'stylesheet';
-    style1.type = 'text/css';
-    document.head.appendChild(style1);
-  });
+	
+	function continueUploading() {
+		if (user) {
+			loader_text.textContent = ('Conectado como:', user.name);
+			style1.href = 'game/ui/styles/title-menu.css';
+			style1.rel = 'stylesheet';
+			style1.type = 'text/css';
+			document.head.appendChild(style1);
+			setTimeout( function () {
+				loader_text.textContent = "Carregando Estilos...";
+			}, 1000);
+		} else {
+			openLogin();
+		};
+	}
+	
   style1.addEventListener('load', function () {
     style2.href = 'game/ui/styles/game.css';
     style2.rel = 'stylesheet';
