@@ -4,7 +4,7 @@ PlayerImage2.src = "game/textures/player/Clancy/2.svg";
 let PlayerImage4 = new Image();
 PlayerImage4.src = "game/textures/player/Clancy/4.svg";
 
-let currentPlayerImage = PlayerImage2;
+const currentPlayerImage = PlayerImage2;
 
 // Define Player size for player/Player
 const PlayerSize = 150;

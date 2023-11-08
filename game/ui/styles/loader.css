@@ -48,7 +48,7 @@
 	z-index: 2;
 }
 
-/*#progress-bar {
+#progress-bar {
 	position: fixed;
 	left: 0;
 	bottom: 0;
@@ -68,10 +68,59 @@
 	border-radius: 3px;
 	background: #fff;
 	z-index: 1;
-	animation: loading 1.5s infinite;
+	transition: width 1.3s ease-in-out;
+	animation: loading_2 1.5s infinite;
 	animation-timing-function: linear;
 	left: 0%;
-}*/
+}
+
+#loader-grouping {
+	position: fixed;
+	width: 50%;
+	bottom: 23px;
+	left: 10px;
+	display: flex;
+	transform: translate(-50%, 0);
+	align-items: center;
+}
+
+#loaderText-grouping {
+	position: relative;
+	bottom: 0;
+	left: 50%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+#loader-text {
+	position: absolute;
+	left: 10px;
+	margin: 0;
+	font-size: 16px;
+	font-family: 'Be Vietnam Pro', sans-serif;
+	color: #ffffff;
+	pointer-events: none;
+}
+
+#loader-textUser {
+	position: absolute;
+	left: 160px;
+	margin: 0;
+	font-size: 16px;
+	font-family: 'Quicksand', sans-serif;
+	color: #ffffff;
+	pointer-events: none;
+}
+
+#loader-in {
+	position: relative;
+	height: 20px;
+	left: 50%;
+	transform: rotate(0deg);
+	animation: loading 0.5s infinite;
+	animation-timing-function: linear;
+}
 
 @media (max-width: 868px) {
 	#minicraft-game-icon {
@@ -84,54 +133,27 @@
 	}
 }
 
-#progress {
-	position: fixed;
-	top: 65%;
-	left: 50%;
-	transform: translate(-50%, 0);
-}
-
-#loader-text {
-	position: relative;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, 0);
-	margin-top: 8px;
-	font-size: 20px;
-	font-weight: bold;
-	text-align: center;
-	color: #ffffff;
-	pointer-events: none;
-}
-
-#loader-textUser {
-	position: relative;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, 0);
-	margin-top: 0;
-	font-size: 16px;
-	text-align: center;
-	color: #ffffff;
-	pointer-events: none;
-}
-
-#loader-in {
-	position: relative;
-	height: 30px;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, 0) rotate(0deg);
-	animation: loading 0.5s infinite;
-	animation-timing-function: linear;
-}
-
 @keyframes loading {
 	0% {
-		transform: translate(-50%, 0) rotate(0deg);
+		transform: rotate(0deg);
 	}
 	100% {
-		transform: translate(-50%, 0) rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes loading_2 {
+	0% {
+		width: 0%;
+		left: -50%;
+	}
+	50% {
+		width: 40%;
+		left: 30%;
+	}
+	100% {
+		width: 5%;
+		left: 150%;
 	}
 }
 

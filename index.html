@@ -8,6 +8,7 @@
 </head>
 
 <style>
+	@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@900&family=Kumbh+Sans:wght@900&family=Quicksand:wght@500&display=swap');
 
 	body {
 		width: 0;
@@ -47,21 +48,20 @@
 			<div id="anchor"></div>
 			<img id="loader-in-panorama" src="game/textures/ui/loader.gif" />
 			<div id="blur"></div>
+			<div>
+				<div id="user_Panel"></div>
+				<a id="user-buttonUrl">
+					<button id="user-button">
+						<img id="user-buttonImage" src="game/ui/styles/textures/Replit.svg" />
+						<span id="user-buttonId">ao Replit...</span>
+						<span id="user-buttonText">Conectando-se</span>
+					</button>
+				</a>
+			</div>
 			<div id="title-menu">
 				<img id="minicraft-game-icon-in-panorama" src="game/textures/ui/minecraft_title.png" />
 				<div>
-					<button id="play-button">
-						<img src="game/textures/ui/play.png" />
-					</button>
-				</div>
-				<div>
-					<a id="user-buttonUrl" href="" onclick="">
-						<button id="user-button">
-							<img id="user-buttonImage" src="game/ui/styles/textures/Replit.svg" />
-							<span id="user-buttonText">Conectando-se</span>
-							<span id="user-buttonId">ao Replit...</span>
-						</button>
-					</a>
+					<button id="play-button">Jogar</button>
 				</div>
 			</div>
 			<div id="underneath-menu">
@@ -80,15 +80,16 @@
 			<div>
 				<img id="minicraft-game-icon" src="game/textures/ui/minecraft_title.png" />
 			</div>
-			<div id="progress">
-				<img id="loader-in" src="loader.svg" />
-				<div id="loader-text">Aguarde...</div>
-				<div id="loader-textUser"></div>
-			</div>
-			</div>
-			<!--<div id="progress-bar">
+			<div id="progress-bar">
 				<div id="progress"></div>
-			</div>-->
+			</div>
+			<div id="loader-grouping">
+				<img id="loader-in" src="loader.svg" />
+				<div id="loaderText-grouping">
+					<div id="loader-text">Aguarde... </div>
+					<div id="loader-textUser"></div>
+				</div>
+			</div>
 			<div>
 				<img id="replit-icon" src="game/textures/ui/replit-logo.svg" />
 			</div>

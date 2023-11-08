@@ -10,12 +10,15 @@ const authenticate = async () => {
 	const user = await getUserInfo();
 
 	if (user) {
+		const minhaString = user.id.toString();
+		const miniID = minhaString.substring(0, 4);
+		const ID = ('#' + miniID);
+		
 		console.log("Logged in as:", user.name);
 		
 		user_buttonImage.src = user.profileImage;
 		user_buttonText.textContent = user.name;
-		user_buttonId.textContent = user.id;
-		user_buttonUrl.href = user.url;
+		user_buttonId.textContent = ID;
 		play_button.style.filter = "saturate(100%)";
 		replitLogin_Background.style.display = "none";
 
@@ -34,7 +37,6 @@ const authenticate = async () => {
 
 		user_buttonText.textContent = "Faça login";
 		user_buttonId.textContent = "Para continuar a jogar!";
-		user_buttonUrl.onclick = "openLogin()";
 		play_button.style.filter = "saturate(0%)";
 		
 		replitLogin_Background.style.display = "block";
@@ -46,7 +48,7 @@ const authenticate = async () => {
 		}, 500);
 		
 		var favicon = document.querySelector("link[rel*='icon']");
-			favicon.href = "game/ui/styles/textures/Replit.svg"
+			favicon.href = "game/ui/styles/textures/Replit.svg";
 		setTimeout( function () {
 			document.title = "Login — Minicraft Plus";
 
@@ -82,9 +84,7 @@ const authenticate = async () => {
 					authWindow.close();
 					authenticate();
 				}
-			}
-
-			
+			}			
 		}, 1500);
 	}
 };

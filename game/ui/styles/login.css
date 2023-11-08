@@ -43,11 +43,11 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%) rotate(0deg);
-	animation: loading_2 0.5s infinite;
+	animation: loading_3 0.5s infinite;
 	animation-timing-function: linear;
 }
 
-@keyframes loading_2 {
+@keyframes loading_3 {
 	0% {
 		transform: translate(-50%, -50%) rotate(0deg);
 	}

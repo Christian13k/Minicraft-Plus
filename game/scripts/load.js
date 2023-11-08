@@ -20,6 +20,28 @@ audioElement.addEventListener("ended", function() {
   }, 2000); 
 });
 
+function simulateLoading() {
+  const progressBar = document.getElementById("progress");
+  progressBar.style.animation = 'none';
+
+  let width = 0;
+
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++;
+      progressBar.style.width = width + "%";
+    }
+  }
+
+  let id = setInterval(frame, 5);
+}
+
+window.onload = function() {
+  simulateLoading();
+};
+
 var style1 = document.createElement('link');
 var loader_text = document.getElementById('loader-text');
 var loader_textUser = document.getElementById('loader-textUser');
@@ -27,7 +49,7 @@ var loader_textUser = document.getElementById('loader-textUser');
 const continueUploading = async () => {
 	const user = await getUserInfo();
 	if (user) {
-		loader_text.textContent = "Conectado como:";
+		loader_text.textContent = "Conectado como:" ;
 		loader_textUser.textContent = user.name;
 		style1.href = 'game/ui/styles/title-menu.css';
 		style1.rel = 'stylesheet';
@@ -46,6 +68,7 @@ window.addEventListener('load', function () {
   var script1 = document.createElement('script');
   var script2 = document.createElement('script');
 	var script3 = document.createElement('script');
+  var script4 = document.createElement('script');
 	var loader_text = document.getElementById('loader-text');
 	var loader_in = document.getElementById('loader-in');
 
@@ -64,9 +87,15 @@ window.addEventListener('load', function () {
 		document.head.appendChild(script3);
 	});
 
+  script3.addEventListener('load', function () {
+    script4.src = 'game/scripts/profile.js';
+    document.head.appendChild(script4);
+  });
+
   var style2 = document.createElement('link');
   var style3 = document.createElement('link');
 	var style4 = document.createElement('link');
+  var style5 = document.createElement('link');
 
   style1.addEventListener('load', function () {
     style2.href = 'game/ui/styles/game.css';
@@ -86,10 +115,18 @@ window.addEventListener('load', function () {
 		style4.type = 'text/css';
 		document.head.appendChild(style4);
 	});
-
   style4.addEventListener('load', function () {
+    style5.href = 'game/ui/styles/profile.css';
+    style5.rel = 'stylesheet';
+    style5.type = 'text/css';
+    document.head.appendChild(style5);
+  });
+
+  style5.addEventListener('load', function () {
+    const progressBar = document.getElementById("progress");
+    progressBar.style.animation = 'loading_2 1.5s infinite';
+    progressBar.style.width = '100%';
 		loader_text.textContent = "Carregando...";
-		loader_in.style.opacity = '0';
     var audio = document.getElementById("music");
     document.addEventListener("visibilitychange", function() {
       if (document.visibilityState === "visible") {
@@ -105,6 +142,8 @@ window.addEventListener('load', function () {
 			loader.style.filter = "blur(50px)";
       document.title = "Início — Minicraft Plus";
 			loader_text.textContent = "";
+      progressBar.style.display = "none";
+      loader_in.style.display = "none";
       setTimeout( function () {
         loader.style.display = "none";
       }, 2500);
