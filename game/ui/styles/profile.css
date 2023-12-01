@@ -2,12 +2,12 @@
   position: fixed;
   bottom: 50%;
   transform: translate(0, 50%);
-  border-radius: 6px 0 0 6px;
-  right: -21%;
-  width: 20%;
+  border-radius: 10px 0 0 10px;
+  right: -377px;
+  width: 377px;
   height: 98%;
   font-family: Arial, sans-serif;
-  background: rgba(0, 0, 0, 50%);
+  background: #232428;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,5 +15,191 @@
   align-content: center;
   opacity: 0;
   transition: opacity 0.1s linear, right 0.3s ease-in-out;
+  overflow: auto;
+}
+
+#user_Panel-errorImage {
+  position: relative;
+  z-index: -1;
+  height: 100px;
+  pointer-events: none;
+  margin: 0;
+}
+
+#user_Panel-error {
+  position: absolute;
+  z-index: -1;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+#user_Panel-errorText {
+  position: relative;
+  z-index: -1;
+  pointer-events: none;
+  color: #fff;
+  font-size: 15px;
+  margin: 5px;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+}
+
+#blurUser-Panel {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  transition: 0.3s linear;
+  background: rgba(0,0,0,0%);
   backdrop-filter: blur(10px);
+}
+
+#user_Panel::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+#user_Panel::-webkit-scrollbar-thumb {
+  height: 56px;
+  border-radius: 8px;
+  border: 7px solid transparent;
+  background-clip: content-box;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+#user_Panel-userImage {
+  position: absolute;
+  z-index: -1;
+  height: 100px;
+  top: 20px;
+  left: 15px;
+  pointer-events: none;
+  background-color: #232428;
+  border: solid 5px #232428;
+  border-radius: 100%;
+}
+
+#user_Panel-userBanner {
+  position: fixed;
+  z-index: -2;
+  width: 100%;
+  height: 85px;
+  background-color: #3b3b3b;
+}
+
+#user_Panel-userInfos {
+  position: absolute;
+  z-index: -2;
+  top: 140px;
+  width: calc(377px - 30px);
+  min-height: calc(43px * 2);
+  border-radius: 5px;
+  background-color: #111214;
+  display: flex;
+  flex-direction: column;
+}
+
+#user_Panel-userName {
+  position: relative;
+  color: #fff;
+  font-size: 19px;
+  margin: 0;
+  top: 10px;
+  left: 10px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+}
+
+#user_Panel-userTag {
+  position: relative;
+  color: rgba(255,255,255, 50%);
+  font-size: 15px;
+  margin: 0;
+  top: 10px;
+  left: 10px;
+  font-family: 'Quicksand', sans-serif;
+  text-transform: lowercase;
+  margin-bottom: 10px;
+}
+
+#user_Panel-Line {
+  position: relative;
+  z-index: -2;
+  width: calc(377px - 50px);
+  height: 0.1px;
+  border-bottom: solid 1px rgba(255,255,255, 30%);
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 10px;
+}
+
+#user_Panel-aboutMe {
+  position: relative;
+  color: #fff;
+  font-size: 13px;
+  margin: 0px;
+  top: 10px;
+  left: 10px;
+  font-family: 'Quicksand', sans-serif;
+  text-transform: uppercase;
+}
+
+#user_Panel-userBio {
+  position: relative;
+  color: rgba(255,255,255, 90%);
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  top: 10px;
+  left: 10px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+#user_Panel-button_ChangeAccount {
+  transform: translate(-50%);
+  position: relative;
+  border: none;
+  background: #111214;
+  color: #fff;
+  width: calc(377px - 50px);
+  height: 35px;
+  text-align: left;
+  border-radius: 3px;
+  left: 50%;
+  font-family: 'Quicksand', sans-serif;
+  margin-top: 10px;
+}
+
+#user_Panel-button_ChangeAccount:hover {
+  background: #242529;
+}
+
+#user_Panel-button_Config {
+  transform: translate(-50%);
+  position: relative;
+  border: none;
+  background: #111214;
+  color: #fff;
+  width: calc(377px - 50px);
+  height: 35px;
+  text-align: left;
+  border-radius: 3px;
+  left: 50%;
+  font-family: 'Quicksand', sans-serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#user_Panel-button_Config:hover {
+  background: #242529;
 }

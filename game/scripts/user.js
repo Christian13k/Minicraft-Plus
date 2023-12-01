@@ -1,28 +1,57 @@
 var play_button = document.getElementById("play-button");
 var user_buttonImage = document.getElementById("user-buttonImage");
+var user_Panel_userImage = document.getElementById("user_Panel-userImage");
+var user_Panel_userName = document.getElementById("user_Panel-userName");
+var user_Panel_userTag = document.getElementById("user_Panel-userTag");
 var user_buttonText = document.getElementById("user-buttonText");
 var user_buttonUrl = document.getElementById("user-buttonUrl");
-var user_buttonId = document.getElementById("user-buttonId");
+var user_Panel_userBio = document.getElementById("user_Panel-userBio");
+//var user_buttonId = document.getElementById("user-buttonId");
 var replitLogin_Background = document.getElementById("replitLogin_Background");
 var replitLogin = document.getElementById("replitLogin");
+var user_Panel_button_ChangeAccount = document.getElementById("user_Panel-button_ChangeAccount");
+
+user_Panel_button_ChangeAccount.addEventListener('click', function() {
+	function openLogin() {
+		window.addEventListener('message', authComplete);
+		var authWindow = window.open(
+			'https://replit.com/auth_with_repl_site?domain=' + location.host,
+			'_blank'
+		);
+		function authComplete(e) {
+			if (e.data !== 'auth_complete') {
+				return;
+			}
+			window.removeEventListener('message', authComplete);
+			authWindow.close();
+			location.reload();
+		}
+	}	
+	openLogin();
+});
 
 const authenticate = async () => {
 	const user = await getUserInfo();
 
 	if (user) {
-		const minhaString = user.id.toString();
-		const miniID = minhaString.substring(0, 4);
-		const ID = ('#' + miniID);
+		const minhaString = user.url.toString();
+		const miniID = minhaString.substring(20);
+		const ID = ('@' + miniID);
 		
 		console.log("Logged in as:", user.name);
 		
 		user_buttonImage.src = user.profileImage;
+		user_Panel_userImage.src = user.profileImage;
+		user_Panel_userName.textContent = user.name;
+		user_Panel_userTag.textContent = ID;
+		user_Panel_userBio.textContent = user.bio;
+
+
 		user_buttonText.textContent = user.name;
-		user_buttonId.textContent = ID;
+		//user_buttonId.textContent = ID;
 		play_button.style.filter = "saturate(100%)";
 		replitLogin_Background.style.display = "none";
 
-		document.title = "Início — Minicraft Plus";
 		var favicon = document.querySelector("link[rel*='icon']");
 			favicon.href = "game/textures/ui/ico.png"
 
@@ -35,8 +64,6 @@ const authenticate = async () => {
 	} else {
 		console.log("Not logged in");
 
-		user_buttonText.textContent = "Faça login";
-		user_buttonId.textContent = "Para continuar a jogar!";
 		play_button.style.filter = "saturate(0%)";
 		
 		replitLogin_Background.style.display = "block";
@@ -62,16 +89,8 @@ const authenticate = async () => {
 				var top = screen.height / 2 - h / 2;
 
 				var authWindow = window.open(
-					'https://repl.it/auth_with_repl_site?domain=' + location.host,
-					'_blank',
-					'modal =yes, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' +
-						w +
-						', height=' +
-						h +
-						', top=' +
-						top +
-						', left=' +
-						left,
+					'https://replit.com/auth_with_repl_site?domain=' + location.host,
+					'_blank'
 				);
 
 				function authComplete(e) {
@@ -82,11 +101,11 @@ const authenticate = async () => {
 					window.removeEventListener('message', authComplete);
 
 					authWindow.close();
-					authenticate();
+					location.reload();
 				}
 			}			
 		}, 1500);
 	}
 };
-
+	
 authenticate();

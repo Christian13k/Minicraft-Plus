@@ -1,21 +1,14 @@
-// Load Player images
-let PlayerImage2 = new Image();
-PlayerImage2.src = "game/textures/player/Clancy/2.svg";
-let PlayerImage4 = new Image();
-PlayerImage4.src = "game/textures/player/Clancy/4.svg";
-
-const currentPlayerImage = PlayerImage2;
-
-// Define Player size for player/Player
-const PlayerSize = 150;
-
-
 // Define initial position of player/Player and camera
 let playerX = canvas.width / 2 - PlayerSize / 2; // Comece no centro horizontal
 let playerY = canvas.height / 2 - PlayerSize / 2; // Comece no chão
 let cameraX = 0;
 let cameraY = canvas.height / 2; // Ajustado para o centro da tela
 
+currentPlayerImage.onload = function () {
+		lastChunkX = Math.floor(playerX / chunkWidth);
+		lastChunkY = Math.floor(playerY / chunkHeight);
+		draw();
+};
 // Function to draw player/Player on the screen
 function drawPlayer() {
 	ctx.drawImage(currentPlayerImage, playerX, playerY, PlayerSize, PlayerSize);

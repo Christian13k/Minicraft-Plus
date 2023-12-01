@@ -1,18 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en-us">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="game/textures/ui/ico.png" type="image/png" />
-	<link href="game/ui/styles/loader.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Minicraft Plus — v1.03.30.0 DEV">
+	<meta name="theme-color" content="#c5bab6">
+	<meta property="og:locale" content="pt_BR">
+	<meta name="author" property="og:author" content="Minicraft Plus — v1.46.27.0 DEV">
+	<meta property="og:title" content="Hello miner! Minicraft Plus | Repl by Klenck Studios">
+	<meta property="og:description" content="Do you know Minicraft? And no, it's not a spelling error, this is the name of a game that Notch programmed.
+		
+		But I recreated it, here at Replit!">
+	<meta property="og:image" content="https://minicraft-plus.klenckstudios.repl.co/game/textures/ui/minecraft_title.png">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta property="twitter:image" content="https://minicraft-plus.klenckstudios.repl.co/game/textures/ui/minecraft_title.png">
+
+	<title>Minicraft Plus</title>
+  <link rel="icon" href="game/textures/ui/ico.png" type="image/png">
+	<link href="game/ui/styles/loader.css" rel="stylesheet" type="text/css">
 </head>
 
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@900&family=Kumbh+Sans:wght@900&family=Quicksand:wght@500&display=swap');
 
 	body {
+		background-color: #2d2d2d;
 		width: 0;
 		height: 0;
+		overflow: hidden;
 	}
 	body::-webkit-scrollbar {
 		width: 0;
@@ -24,11 +41,18 @@
 		-ms-user-select: none;
 		user-select: none; 
 	}
+	#music {
+			transition: volume 3s ease; /* Propriedade de transição para o volume */
+	}
 </style>
 
 <body>
+	<canvas id="canvas" style="display: none;"></canvas>
+
 	<img src="game/ui/styles/textures/open.png" id="loader-img" style="display: none;" />
+	<div id="ErrorMessage"><img src="bot.svg"><h1>There was an error!</h1><p>But just restart the page!</p><button id="ErrorMessage_button">Reload</button></div>
 	<div id="minicraft-plus" style="display: none;">
+		<div id="offlineStamp"><h1 id="offlineStamp-text">Você está offline!</h1><img id="trying-toReconnect" src="loader.svg"></div>
 		<div>
 			<canvas id="jogo"></canvas>
 			<div id="controls">
@@ -48,16 +72,6 @@
 			<div id="anchor"></div>
 			<img id="loader-in-panorama" src="game/textures/ui/loader.gif" />
 			<div id="blur"></div>
-			<div>
-				<div id="user_Panel"></div>
-				<a id="user-buttonUrl">
-					<button id="user-button">
-						<img id="user-buttonImage" src="game/ui/styles/textures/Replit.svg" />
-						<span id="user-buttonId">ao Replit...</span>
-						<span id="user-buttonText">Conectando-se</span>
-					</button>
-				</a>
-			</div>
 			<div id="title-menu">
 				<img id="minicraft-game-icon-in-panorama" src="game/textures/ui/minecraft_title.png" />
 				<div>
@@ -65,6 +79,52 @@
 				</div>
 			</div>
 			<div id="underneath-menu">
+			</div>
+		</div>
+
+		<div id="blurUser-Panel"></div>
+
+		<div id="topPanel">
+			<a id="user-buttonUrl">
+				<button id="user-button">
+					<img id="user-buttonImage" src="game/ui/styles/textures/Replit.svg" />
+					<!-- <span id="user-buttonId"></span> -->
+					<span id="user-buttonText"></span>
+				</button>
+			</a>
+			<div name="user">
+				<div id="user_Panel">
+					<div id="user_Panel-error" style="display: none;">
+						<img id="user_Panel-errorImage" src="untitled.svg">
+						<span id="user_Panel-errorText">Did not work... :(</span>
+					</div>
+					
+					<div id="user_Panel-userBanner">
+						<img id="user_Panel-userImage" />
+					</div>
+					<div id="user_Panel-userInfos">
+						<div>
+							<h2 id="user_Panel-userName">You!</h2>
+							<p id="user_Panel-userTag">@you</p>
+						</div>
+						<div id="user_Panel-Line"></div>
+						<div>
+							<h2 id="user_Panel-aboutMe">About me</h2>
+							<p id="user_Panel-userBio">Hi!</p>
+						</div>
+						<div id="user_Panel-Line"></div>
+						<div>
+							<button id="user_Panel-button_ChangeAccount">Change profile</button>
+							<button id="user_Panel-button_Config">Settings</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<button>Jogar</button>
+				<button>Loja</button>
+				<button>Carreira</button>
+				<button>Missões</button>
 			</div>
 		</div>
 
@@ -86,7 +146,8 @@
 			<div id="loader-grouping">
 				<img id="loader-in" src="loader.svg" />
 				<div id="loaderText-grouping">
-					<div id="loader-text">Aguarde... </div>
+					<div id="loader-text">Wait... </div>
+					<img id="loader-imageUser" src="" />
 					<div id="loader-textUser"></div>
 				</div>
 			</div>
@@ -98,27 +159,46 @@
 		<div name="audios">
 			<audio id="music">
 				<source src="game/textures/music/Beatoven.mp3" type="audio/mp3" />
-				<source src="game/textures/music/Beatoven_7.mp3" type="audio/mp3" />
+				<source src="game/textures/music/Beatoven_2.mp3" type="audio/mp3" />
 			</audio>
 			<audio id="gui" src="game/textures/music/release-4756c.ogg" type="audio/ogg"></audio>
 		</div>
 	</div>
 
-<script>
+	<script>
+		ErrorMessage_button.addEventListener('click', function() {
+			window.location.reload();
+		});
+		
 		var minicraftPlus = document.getElementById("minicraft-plus");
-		minicraftPlus.style.display = "block";
+		window.addEventListener('load', function () {
+			ErrorMessage.style.opacity = "100";
+		});
+
 		window.addEventListener('DOMContentLoaded', function () {
-			var loaderImg = document.getElementById("loader-img");
-			document.title = "Minicraft Plus";
-			loaderImg.addEventListener('load', function () {
-				var script = document.createElement('script');
-				var open = document.getElementById("open");
-				script.src = 'game/scripts/load.js';
-				document.head.appendChild(script);
-				open.style.backdropFilter = "blur(0)";
-			});
+			if ('serviceWorker' in navigator) {
+				var serviceWorker_messageError = "Failed to register Service Worker";
+				var minicraftPlus = document.getElementById("minicraft-plus");
+				navigator.serviceWorker.register('/service-worker.js')
+					.then(registration => {
+						var script = document.createElement('script');
+						script.src = '/verification.js';
+						document.head.appendChild(script);
+						console.log('Service Worker registrado com sucesso:', registration);
+					})
+					.catch(error => {
+						console.error('Falha ao registrar o Service Worker:', error);
+						ErrorMessage.innerHTML = ('<img src="bot.svg">' + '<h1>' + serviceWorker_messageError + '</h1>' + '<p>' + error + '</p>');
+						script.addEventListener('load', function () {
+							minicraftPlus.style.display = "none";
+
+						});
+					});
+			}
 		});
 	</script>
 	<script src="https://replit.com/public/js/repl-auth-v2.js"></script>
+
 </body>
+	
 </html>

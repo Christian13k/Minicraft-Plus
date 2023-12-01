@@ -51,13 +51,13 @@ requestAnimationFrame(checkGamepad);
 // Adicione interatividade para mover o jogador/bloco nas direções ↑, ↓, ← e →
 document.addEventListener("keydown", (event) => {
 	if (event.key === "D" || event.key === "d") {
-		targetPlayerX += 0.05; // Mudar para 1 para movimento mais rápido
+		targetPlayerX += 0.05;
 		currentPlayerImage = PlayerImage4;
 	}
 });
 document.addEventListener("keydown", (event) => {
 	if (event.key === "A" || event.key === "a") {
-		targetPlayerX -= 0.05; // Mudar para 1 para movimento mais rápido
+		targetPlayerX -= 0.05;
 		currentPlayerImage = PlayerImage2;
 	}
 });

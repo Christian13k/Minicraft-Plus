@@ -9,7 +9,7 @@
 	width: 100%;
 	height: 100%;
 	font-family: Arial, sans-serif;
-	background: url('textures/panorama.png'), #000;
+	background: linear-gradient(0deg, rgba(0,0,0,0%) 90%,rgba(0,0,0,60%) 100%), url('textures/panorama.png'), #000;
 	background-size: cover;
 	background-position: 0%;
 	animation: panorama 60s infinite;
@@ -99,25 +99,27 @@
 }
 
 #user-button {
-	position: absolute;
+	position: fixed;
 	top: 7px;
 	right: 7px;
 	height: 50px;
-	width: 17%;
+	min-width: 8%;
 	border: none;
 	cursor: pointer;
 	background: transparent;
-	border-radius: 60px;
 	padding: 0;
+	border-radius: 60px;
+	padding-left: 33px;
 	display: flex;
 	flex-wrap: nowrap;
 	align-items: center;
 	justify-content: flex-start;
 	flex-direction: row-reverse;
+	transition: top 0.4s ease-in-out;
 }
 
 #user-button:hover {
-	box-shadow: 0 0 0 1px #0079f2;
+	background: rgba(0, 0, 0, 10%);
 }
 
 #user-button img {
@@ -175,13 +177,6 @@
 	border: 7px solid transparent;
 	background-clip: content-box;
 	background-color: rgba(255, 255, 255, 0.3);
-}
-
-p {
-	font-family: MinecraftTenV2, sans-serif;
-	text-align: center;
-	font-size: 10px;
-	color: #fff;
 }
 
 #profile-container {

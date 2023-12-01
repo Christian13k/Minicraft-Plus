@@ -6,19 +6,36 @@ var audioElement = document.getElementById("music");
 var sources = audioElement.getElementsByTagName("source");
 var currentSource = 0;
 
-audioElement.addEventListener("ended", function() {
-  if (currentSource < sources.length - 1) {
-    currentSource++;
-  } else {
-    currentSource = 0;
+function transition() {
+  let volume = 0;
+
+  function frame() {
+    if (volume >= 0.5) {
+      clearInterval(id);
+    } else {
+      volume += 0.01;
+      audioElement.play();
+      audioElement.volume = volume;
+    }
   }
 
-  audioElement.src = sources[currentSource].src;
+  let id = setInterval(frame, 100);
+}
 
-  setTimeout(function() {
-    audioElement.play();
-  }, 2000); 
+audioElement.addEventListener("ended", function() {
+    if (currentSource < sources.length - 1) {
+        currentSource++;
+        audioElement.volume = 0;
+        setTimeout(function() {
+            audioElement.src = sources[currentSource].src;
+            transition();
+        }, 500); // Tempo de espera igual à duração da transição
+    } else {
+        audioElement.play();
+    }
 });
+
+audioElement.src = sources[currentSource].src;
 
 function simulateLoading() {
   const progressBar = document.getElementById("progress");
@@ -42,21 +59,47 @@ window.onload = function() {
   simulateLoading();
 };
 
+window.addEventListener('offline', function () {
+  var offlineStamp = document.getElementById('offlineStamp');
+  var offlineStamp_Text = document.getElementById('offlineStamp-text');
+  var trying_toReconnect = document.getElementById('trying-toReconnect');
+
+  offlineStamp_Text.textContent = "You are offline!";
+  offlineStamp.style.transform = 'translateY(0)';
+  trying_toReconnect.src = 'loader.svg';
+});
+window.addEventListener('online', function () {
+  var offlineStamp = document.getElementById('offlineStamp');
+  var offlineStamp_Text = document.getElementById('offlineStamp-text');
+  var trying_toReconnect = document.getElementById('trying-toReconnect');
+
+  offlineStamp.style.transform = 'translateY(0)';
+  offlineStamp_Text.textContent = "Connected!";
+  trying_toReconnect.src = '';
+});
+
 var style1 = document.createElement('link');
 var loader_text = document.getElementById('loader-text');
+var loader_imageUser = document.getElementById('loader-imageUser');
 var loader_textUser = document.getElementById('loader-textUser');
 
 const continueUploading = async () => {
 	const user = await getUserInfo();
+  const minhaString = user.url.toString();
+  const miniID = minhaString.substring(20);
+  const ID = ('@' + miniID);
 	if (user) {
-		loader_text.textContent = "Conectado como:" ;
-		loader_textUser.textContent = user.name;
+		loader_text.textContent = "Logged in as:" ;
+    loader_imageUser.style.display = 'block';
+    loader_imageUser.src = user.profileImage;
+		loader_textUser.textContent = (user.name + ' ' + ID);
 		style1.href = 'game/ui/styles/title-menu.css';
 		style1.rel = 'stylesheet';
 		style1.type = 'text/css';
 		document.head.appendChild(style1);
 		setTimeout( function () {
-			loader_text.textContent = "Carregando Estilos...";
+      loader_imageUser.style.display = 'none';
+			loader_text.textContent = "Loading Styles...";
 			loader_textUser.textContent = "";
 		}, 1000);
 	} else {
@@ -64,15 +107,16 @@ const continueUploading = async () => {
 	};
 }
 
-window.addEventListener('load', function () {
+window.addEventListener('load', function () {    
   var script1 = document.createElement('script');
   var script2 = document.createElement('script');
 	var script3 = document.createElement('script');
   var script4 = document.createElement('script');
+  var script5 = document.createElement('script');
 	var loader_text = document.getElementById('loader-text');
 	var loader_in = document.getElementById('loader-in');
 
-	loader_text.textContent = "Carregando Scripts...";
+	loader_text.textContent = "Loading Scripts...";
 	script1.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
 	document.head.appendChild(script1);
 	
@@ -81,9 +125,14 @@ window.addEventListener('load', function () {
     document.head.appendChild(script2);
   });
 
-	script2.addEventListener('load', function () {
+  script2.addEventListener('load', function () {
+    script5.src = 'https://cdn.jsdelivr.net/npm/colorthief@2.3.2/dist/color-thief.min.js';
+    document.head.appendChild(script5);
+  });
+
+	script5.addEventListener('load', function () {
 		script3.src = 'game/scripts/user.js';
-		loader_text.textContent = "Autenticando...";
+		loader_text.textContent = "Authenticating...";
 		document.head.appendChild(script3);
 	});
 
@@ -96,6 +145,7 @@ window.addEventListener('load', function () {
   var style3 = document.createElement('link');
 	var style4 = document.createElement('link');
   var style5 = document.createElement('link');
+  var style6 = document.createElement('link');
 
   style1.addEventListener('load', function () {
     style2.href = 'game/ui/styles/game.css';
@@ -121,32 +171,33 @@ window.addEventListener('load', function () {
     style5.type = 'text/css';
     document.head.appendChild(style5);
   });
-
   style5.addEventListener('load', function () {
+    style6.href = 'game/ui/styles/offline.css';
+    style6.rel = 'stylesheet';
+    style6.type = 'text/css';
+    document.head.appendChild(style6);
+  });
+
+  style6.addEventListener('load', function () {
     const progressBar = document.getElementById("progress");
     progressBar.style.animation = 'loading_2 1.5s infinite';
     progressBar.style.width = '100%';
-		loader_text.textContent = "Carregando...";
+		loader_text.textContent = "Loading...";
     var audio = document.getElementById("music");
-    document.addEventListener("visibilitychange", function() {
-      if (document.visibilityState === "visible") {
-        audio.play();
-      } else {
-        audio.pause();
-      }
-    });
+    audio.volume = 0;
     setTimeout( function () {
-			audio.volume = 0.01;
-			audio.play();
+			audio.volume = 0.5;
       loader.style.opacity = "0";
 			loader.style.filter = "blur(50px)";
-      document.title = "Início — Minicraft Plus";
+      document.title = "Home — Minicraft Plus";
 			loader_text.textContent = "";
       progressBar.style.display = "none";
       loader_in.style.display = "none";
       setTimeout( function () {
         loader.style.display = "none";
+        audio.play();
       }, 2500);
     }, 3000);
   });
 });
+

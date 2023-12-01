@@ -118,8 +118,3 @@ function draw() {
 }
 
 // Aguarde o carregamento da imagem do bloco antes de iniciar o loop de animação
-currentPlayerImage.onload = function () {
-		lastChunkX = Math.floor(playerX / chunkWidth);
-		lastChunkY = Math.floor(playerY / chunkHeight);
-		draw();
-};
