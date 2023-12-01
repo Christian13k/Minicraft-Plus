@@ -170,7 +170,7 @@
 
 #loader-imageUser {
 	position: absolute;
-	left: 160px;
+	left: 130px;
 	border-radius: 50%;
 	width: 23px;
 	margin: 0;
@@ -181,7 +181,7 @@
 
 #loader-textUser {
 	position: absolute;
-	left: 188px;
+	left: 160px;
 	margin: 0;
 	width: 500px;
 	font-size: 16px;

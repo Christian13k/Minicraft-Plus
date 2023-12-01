@@ -24,7 +24,7 @@ user_Panel_button_ChangeAccount.addEventListener('click', function() {
 			}
 			window.removeEventListener('message', authComplete);
 			authWindow.close();
-			location.reload();
+			authenticate();
 		}
 	}	
 	openLogin();
@@ -34,6 +34,7 @@ const authenticate = async () => {
 	const user = await getUserInfo();
 
 	if (user) {
+		var user_Panel_userBadges = document.getElementById("user_Panel-userBadges");
 		const minhaString = user.url.toString();
 		const miniID = minhaString.substring(20);
 		const ID = ('@' + miniID);
@@ -46,6 +47,20 @@ const authenticate = async () => {
 		user_Panel_userTag.textContent = ID;
 		user_Panel_userBio.textContent = user.bio;
 
+		if (user.roles.includes("explorer")) {
+			var userBadge = document.createElement('img');
+			userBadge.src = 'game/ui/badges/explorer.svg';
+			userBadge.id = 'user_Panel-userBadge';
+			userBadge.title = "Explorer — Explorers help Replit test new features.";
+			user_Panel_userBadges.appendChild(userBadge);
+		}
+		if (user.teams.includes("KlenckStudios")) {
+			var userBadge = document.createElement('img');
+			userBadge.src = 'game/ui/badges/team-dev.svg';
+			userBadge.id = 'user_Panel-userBadge';
+			userBadge.title = "Developer — Developer on the game creation team.";
+			user_Panel_userBadges.appendChild(userBadge);
+		}
 
 		user_buttonText.textContent = user.name;
 		//user_buttonId.textContent = ID;

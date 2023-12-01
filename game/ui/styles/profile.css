@@ -203,3 +203,25 @@
 #user_Panel-button_Config:hover {
   background: #242529;
 }
+
+#user_Panel-userBadges {
+  position: absolute;
+  z-index: -2;
+  top: 98px;
+  right: 15px;
+  min-width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #111214;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+#user_Panel-userBadge {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+}
