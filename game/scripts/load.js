@@ -73,7 +73,7 @@ window.addEventListener('online', function () {
   var offlineStamp_Text = document.getElementById('offlineStamp-text');
   var trying_toReconnect = document.getElementById('trying-toReconnect');
 
-  offlineStamp.style.transform = 'translateY(0)';
+  offlineStamp.style.transform = 'translateY(100px)';
   offlineStamp_Text.textContent = "Connected!";
   trying_toReconnect.src = '';
 });
