@@ -4,7 +4,8 @@ const urlsToCache = [
   '/game/textures/ui/minecraft_title.png',
   '/game/ui/styles/textures/panorama.png',
   '/game/ui/styles/textures/open.png',
-  '/game/scripts/load.js',
+  '/game/ui/styles/offline.css',
+  '/verification.js',
   '/bot.svg'
   // Adicione outras URLs dos recursos que você deseja armazenar em cache
 ];

@@ -2,9 +2,6 @@ const controls = document.getElementById("controls");
 const canvas = document.getElementById("jogo");
 const ctx = canvas.getContext("2d");
 
-var minicraftPlus = document.getElementById("minicraft-plus");
-minicraftPlus.style.display = "none";
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 

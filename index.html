@@ -26,7 +26,7 @@
 	@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@900&family=Kumbh+Sans:wght@900&family=Quicksand:wght@500&display=swap');
 
 	body {
-		background-color: #000;
+		background: #000;
 		width: 0;
 		height: 0;
 		overflow: hidden;
@@ -102,7 +102,10 @@
 					</div>
 					
 					<div id="user_Panel-userBanner">
-						<img id="user_Panel-userImage" />
+						<div id="user_Panel-userImageAndVisibility">
+							<img id="user_Panel-userImage" />
+							<div id="user_Panel-userVisibility"></div>
+						</div>
 					</div>
 					<div id="user_Panel-userBadges">
 					</div>
@@ -157,6 +160,14 @@
 			</div>
 			<div>
 				<img id="replit-icon" src="game/textures/ui/replit-logo.svg" />
+			</div>
+			<div>
+				<div id="replitLogo">
+					<img src="game/textures/ui/made-in-replit.svg" />
+				</div>
+				<div id="teamLogo">
+					<img src="game/ui/styles/textures/Klenck.svg" />
+				</div>
 			</div>
 		</div>
 

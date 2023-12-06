@@ -14,12 +14,29 @@ function gerarNumero() {
 // Exemplo de uso
 let numeroGerado = gerarNumero();
 
-function loadscript() {
+function loadScript() {
   var script = document.createElement('script');
   var open = document.getElementById("open");
   script.src = 'game/scripts/load.js';
   document.head.appendChild(script);
   open.style.backdropFilter = "blur(0)";
+}
+
+function openMini() {
+  var teamLogo = document.getElementById("teamLogo");
+  var replitLogo = document.getElementById("replitLogo");
+  document.title = "Create by Klenck Studios";
+  setTimeout(function () {
+    teamLogo.style.opacity = "0";
+    document.title = "Made in Replit";
+    setTimeout(function () {
+      replitLogo.style.opacity = "0";
+      document.title = "Minicraft Plus";
+      setTimeout(function () {
+        loadScript();
+      }, 500);
+    }, 3000);
+  }, 3000);
 }
 
 var minicraftPlus = document.getElementById("minicraft-plus");
@@ -29,12 +46,12 @@ var unsupportedBrowser_message = "Your browser does not support this website";
 if (userAgent.indexOf('Chrome') > -1) {
   console.log('O usuário está usando o Google Chrome.');
   minicraftPlus.style.display = "block";
-  loadscript();
+  openMini();
 
 } else if (userAgent.indexOf('Firefox') > -1) {
   console.log('O usuário está usando o Mozilla Firefox.');
   minicraftPlus.style.display = "block";
-  loadscript();
+  openMini();
 
 } else if (userAgent.indexOf('Safari') > -1) {
   console.log('O usuário está usando o Safari.');
@@ -47,7 +64,7 @@ if (userAgent.indexOf('Chrome') > -1) {
 } else if (userAgent.indexOf('Edge') > -1) {
   console.log('O usuário está usando o Microsoft Edge.');
   minicraftPlus.style.display = "block";
-  loadscript();
+  openMini();
 
 } else {
   console.log('Navegador não identificado.');

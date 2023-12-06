@@ -77,15 +77,32 @@
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-#user_Panel-userImage {
+#user_Panel-userImageAndVisibility {
   position: absolute;
+  height: 110px;
+  width: 110px;
   z-index: -1;
-  height: 100px;
   top: 20px;
   left: 15px;
+}
+
+#user_Panel-userImage {
+  position: absolute;
+  height: 100px;
   pointer-events: none;
   background-color: #232428;
   border: solid 5px #232428;
+  border-radius: 100%;
+}
+
+#user_Panel-userVisibility {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  bottom: 0px;
+  right: 0;
+  background-color: #23a45a;
+  border: solid 7px #232428;
   border-radius: 100%;
 }
 
