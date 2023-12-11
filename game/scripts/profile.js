@@ -32,6 +32,7 @@ blurUser_Panel.addEventListener("mousemove", function () {
 var Timeout
 
 function showControls() {
+  escPressionado = !escPressionado;
   clearTimeout(Timeout);
   Timeout = setTimeout(function () {
     user_Panel.style.opacity = "100";
@@ -52,6 +53,7 @@ function startTimerToHideControls() {
 }
 
 function hideControls() {
+  escPressionado = false;
   user_Panel.style.right = "-377px";
   blurUser_Panel.style.backdropFilter = "blur(0px)";
   blurUser_Panel.style.background = "rgba(0,0,0,0%)";

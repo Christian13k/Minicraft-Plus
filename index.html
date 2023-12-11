@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<meta property="og:type" content="website">
-	<meta property="og:site_name" content="Minicraft Plus — v1.03.30.0 DEV">
+	<meta property="og:site_name" content="Minicraft Plus — v1.46.30.8 DEV">
 	<meta name="theme-color" content="#c5bab6">
 	<meta property="og:locale" content="pt_BR">
-	<meta name="author" property="og:author" content="Minicraft Plus — v1.46.27.0 DEV">
+	<meta name="author" property="og:author" content="Minicraft Plus — v1.46.30.8 DEV">
 	<meta property="og:title" content="Hello miner! Minicraft Plus | Repl by Klenck Studios">
 	<meta property="og:description" content="Do you know Minicraft? And no, it's not a spelling error, this is the name of a game that Notch programmed.
 		
@@ -125,6 +125,7 @@
 							<button id="user_Panel-button_Config">Settings</button>
 						</div>
 					</div>
+					<img id="klenckLogo" src="game/ui/styles/textures/Klenck.svg"/>
 				</div>
 			</div>
 			<div>
@@ -135,10 +136,10 @@
 			</div>
 		</div>
 
-		<div id="replitLogin_Background">
-			<div id="replitLogin">
-				<img src="loader.svg" id="replitLogin_loader" />
-				<div id="replitLogin_text">Abrindo o Replit auth...</div>
+		<div id="Login_Background">
+			<div id="Login">
+				<img src="loader.svg" id="Login_loader" />
+				<div id="Login_text">Abrindo o Replit auth...</div>
 			</div>
 		</div>
 
@@ -150,24 +151,17 @@
 			<div id="progress-bar">
 				<div id="progress"></div>
 			</div>
+			<img id="loader-imageUser" src="" />
+			<div id="loader-textUser"></div>
 			<div id="loader-grouping">
-				<img id="loader-in" src="loader.svg" />
 				<div id="loaderText-grouping">
-					<div id="loader-text">Wait... </div>
-					<img id="loader-imageUser" src="" />
-					<div id="loader-textUser"></div>
+					<img id="loader-in" src="loader.svg" />
+					<div id="loader-text">Wait</div>
 				</div>
 			</div>
 			<div>
-				<img id="replit-icon" src="game/textures/ui/replit-logo.svg" />
-			</div>
-			<div>
-				<div id="replitLogo">
-					<img src="game/textures/ui/made-in-replit.svg" />
-				</div>
-				<div id="teamLogo">
-					<img src="game/ui/styles/textures/Klenck.svg" />
-				</div>
+				<span id="loader-textGame_version">v1.46.30.8 DEV | Preview</span>
+				<span id="loader-textReplit">Made in Replit — Create by Klenck Studios</span>
 			</div>
 		</div>
 
@@ -190,30 +184,10 @@
 			ErrorMessage.style.opacity = "100";
 		});
 
-		window.addEventListener('DOMContentLoaded', function () {
-			if ('serviceWorker' in navigator) {
-				var serviceWorker_messageError = "Failed to register Service Worker";
-				var minicraftPlus = document.getElementById("minicraft-plus");
-				navigator.serviceWorker.register('/service-worker.js')
-					.then(registration => {
-						var script = document.createElement('script');
-						script.src = '/verification.js';
-						document.head.appendChild(script);
-						console.log('Service Worker registrado com sucesso:', registration);
-					})
-					.catch(error => {
-						console.error('Falha ao registrar o Service Worker:', error);
-						ErrorMessage.innerHTML = ('<img src="bot.svg">' + '<h1>' + serviceWorker_messageError + '</h1>' + '<p>' + error + '</p>');
-						script.addEventListener('load', function () {
-							minicraftPlus.style.display = "none";
-
-						});
-					});
-			}
-		});
+		var script = document.createElement('script');
+		script.src = '/verification.js';
+		document.head.appendChild(script);
 	</script>
-	<script src="https://replit.com/public/js/repl-auth-v2.js"></script>
 
 </body>
-	
 </html>

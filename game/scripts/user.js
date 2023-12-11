@@ -7,8 +7,8 @@ var user_buttonText = document.getElementById("user-buttonText");
 var user_buttonUrl = document.getElementById("user-buttonUrl");
 var user_Panel_userBio = document.getElementById("user_Panel-userBio");
 //var user_buttonId = document.getElementById("user-buttonId");
-var replitLogin_Background = document.getElementById("replitLogin_Background");
-var replitLogin = document.getElementById("replitLogin");
+var Login_Background = document.getElementById("Login_Background");
+var Login = document.getElementById("Login");
 var user_Panel_button_ChangeAccount = document.getElementById("user_Panel-button_ChangeAccount");
 
 user_Panel_button_ChangeAccount.addEventListener('click', function() {
@@ -65,7 +65,7 @@ const authenticate = async () => {
 		user_buttonText.textContent = user.name;
 		//user_buttonId.textContent = ID;
 		play_button.style.filter = "saturate(100%)";
-		replitLogin_Background.style.display = "none";
+		Login_Background.style.display = "none";
 
 		var favicon = document.querySelector("link[rel*='icon']");
 			favicon.href = "game/textures/ui/ico.png"
@@ -81,12 +81,12 @@ const authenticate = async () => {
 
 		play_button.style.filter = "saturate(0%)";
 		
-		replitLogin_Background.style.display = "block";
+		Login_Background.style.display = "block";
 		setTimeout( function () {
-			replitLogin_Background.style.opacity = "100";
-			replitLogin.style.opacity = "100";
-			replitLogin.style.transform = "translate(-50%, 50%)";
-			replitLogin.style.bottom = "50%";
+			Login_Background.style.opacity = "100";
+			Login.style.opacity = "100";
+			Login.style.transform = "translate(-50%, 50%)";
+			Login.style.bottom = "50%";
 		}, 500);
 		
 		var favicon = document.querySelector("link[rel*='icon']");
@@ -116,7 +116,7 @@ const authenticate = async () => {
 					window.removeEventListener('message', authComplete);
 
 					authWindow.close();
-					location.reload();
+					authenticate();
 				}
 			}			
 		}, 1500);
@@ -124,3 +124,18 @@ const authenticate = async () => {
 };
 	
 authenticate();
+
+async function getUserInfo() {
+	return fetch('/__replauthuser')
+		.then((e) => e.json())
+		.then((userInfo) => {
+			if (!userInfo) {
+				return null;
+			}
+
+			return userInfo;
+		})
+		.catch(() => {
+			return null;
+		});
+}

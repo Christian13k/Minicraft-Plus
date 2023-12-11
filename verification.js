@@ -14,29 +14,12 @@ function gerarNumero() {
 // Exemplo de uso
 let numeroGerado = gerarNumero();
 
-function loadScript() {
-  var script = document.createElement('script');
-  var open = document.getElementById("open");
-  script.src = 'game/scripts/load.js';
-  document.head.appendChild(script);
-  open.style.backdropFilter = "blur(0)";
-}
-
 function openMini() {
-  var teamLogo = document.getElementById("teamLogo");
-  var replitLogo = document.getElementById("replitLogo");
-  document.title = "Create by Klenck Studios";
-  setTimeout(function () {
-    teamLogo.style.opacity = "0";
-    document.title = "Made in Replit";
-    setTimeout(function () {
-      replitLogo.style.opacity = "0";
-      document.title = "Minicraft Plus";
-      setTimeout(function () {
-        loadScript();
-      }, 500);
-    }, 3000);
-  }, 3000);
+  var scriptLoad = document.createElement('script');
+  var open = document.getElementById("open");
+  scriptLoad.src = '/game/scripts/load.js';
+  document.head.appendChild(scriptLoad);
+  open.style.backdropFilter = "blur(0)";
 }
 
 var minicraftPlus = document.getElementById("minicraft-plus");
@@ -75,9 +58,8 @@ if (userAgent.indexOf('Chrome') > -1) {
 if (window !== window.top) {
   minicraftPlus.style.display = "none";
   ErrorMessage.innerHTML = ('<img src="iframe.svg">' + '<h1>' + "Are you using iframe?" + '</h1>' + '<p>' + "For a better experience visit the website:" + '</p>' + '<button id="ErrorMessage_button">Open</button>');
-  
+
   ErrorMessage_button.addEventListener('click', function() {
-    window.open('https://minicraft-plus.klenckstudios.repl.co/','_blank');
+    window.open('https://minicraft-plus.klenckstudios.repl.co/', '_blank');
   });
-} else {
 }
