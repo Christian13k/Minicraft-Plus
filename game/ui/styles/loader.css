@@ -245,6 +245,15 @@
   pointer-events: none;
 }
 
+#loader_textFinished {
+  position: relative;
+  margin: 0;
+  font-size: 15px;
+  font-family: 'Quicksand', sans-serif;
+  color: rgba(255, 255, 255, 80%);
+  pointer-events: none;
+}
+
 #loader-imageUser {
   position: absolute;
   transform: translate(-50%, 0%);
@@ -275,7 +284,7 @@
   height: 32px;
   transform: rotate(0deg);
   animation: loading 0.5s infinite;
-  animation-timing-function: ease-in-out;
+  animation-timing-function: linear;
 }
 
 @media (max-width: 868px) {

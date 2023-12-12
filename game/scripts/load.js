@@ -80,14 +80,12 @@ window.addEventListener('online', function() {
 
 var style1 = document.createElement('link');
 var loader_text = document.getElementById('loader-text');
+var loader_textFinished = document.getElementById('loader_textFinished');
 var loader_imageUser = document.getElementById('loader-imageUser');
 var loader_textUser = document.getElementById('loader-textUser');
 
 const continueUploading = async () => {
   const user = await getUserInfo();
-  const minhaString = user.url.toString();
-  const miniID = minhaString.substring(20);
-  const ID = ('@' + miniID);
   if (user) {
     loader_text.textContent = "Loading Styles";
     loader_imageUser.style.display = 'block';
@@ -114,26 +112,31 @@ window.addEventListener('load', function() {
   loader_text.textContent = "Loading Scripts";
   script1.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
   document.head.appendChild(script1);
+  loader_textFinished.textContent = "0 of 10";
 
   script1.addEventListener('load', function() {
     script2.src = 'game/scripts/save_world.js';
     document.head.appendChild(script2);
+    loader_textFinished.textContent = "1 of 10";
   });
 
   script2.addEventListener('load', function() {
     script5.src = 'https://cdn.jsdelivr.net/npm/colorthief@2.3.2/dist/color-thief.min.js';
     document.head.appendChild(script5);
+    loader_textFinished.textContent = "2 of 10";
   });
 
   script5.addEventListener('load', function() {
     script3.src = 'game/scripts/user.js';
     loader_text.textContent = "Authenticating";
     document.head.appendChild(script3);
+    loader_textFinished.textContent = "3 of 10";
   });
 
   script3.addEventListener('load', function() {
     script4.src = 'game/scripts/profile.js';
     document.head.appendChild(script4);
+    loader_textFinished.textContent = "4 of 10";
   });
 
   var style2 = document.createElement('link');
@@ -147,33 +150,39 @@ window.addEventListener('load', function() {
     style2.rel = 'stylesheet';
     style2.type = 'text/css';
     document.head.appendChild(style2);
+    loader_textFinished.textContent = "5 of 10";
   });
   style2.addEventListener('load', function() {
     style3.href = 'game/ui/styles/pause.css';
     style3.rel = 'stylesheet';
     style3.type = 'text/css';
     document.head.appendChild(style3);
+    loader_textFinished.textContent = "6 of 10";
   });
   style3.addEventListener('load', function() {
     style4.href = 'game/ui/styles/login.css';
     style4.rel = 'stylesheet';
     style4.type = 'text/css';
     document.head.appendChild(style4);
+    loader_textFinished.textContent = "7 of 10";
   });
   style4.addEventListener('load', function() {
     style5.href = 'game/ui/styles/profile.css';
     style5.rel = 'stylesheet';
     style5.type = 'text/css';
     document.head.appendChild(style5);
+    loader_textFinished.textContent = "8 of 10";
   });
   style5.addEventListener('load', function() {
     style6.href = 'game/ui/styles/offline.css';
     style6.rel = 'stylesheet';
     style6.type = 'text/css';
     document.head.appendChild(style6);
+    loader_textFinished.textContent = "9 of 10";
   });
 
   style6.addEventListener('load', function() {
+    loader_textFinished.textContent = "Download finished!";
     const progressBar = document.getElementById("progress");
     progressBar.style.animation = 'loading_2 1.5s infinite';
     progressBar.style.width = '100%';
@@ -184,9 +193,8 @@ window.addEventListener('load', function() {
       audio.volume = 0.5;
       loader.style.opacity = "0";
       loader.style.filter = "blur(50px)";
-      document.title = "Home — Minicraft Plus";
-      loader_text.textContent = "";
-      progressBar.style.display = "none";
+      document.title = "Home — Minicraft";
+      loader_text.textContent = "Wait";
       loader_in.style.display = "none";
       setTimeout(function() {
         loader.style.display = "none";
