@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\static",
+    "\\static\\game",
+    "\\static\\game\\textures",
+    "\\static\\game\\textures\\ui",
+    "\\static\\game\\ui",
+    "\\static\\game\\ui\\styles",
+    "\\static\\game\\ui\\styles\\textures",
+    "\\static\\game\\ui\\styles\\textures\\loaders",
+    "\\templates"
+  ],
+  "SelectedNode": "\\app.py",
+  "PreviewInSolutionExplorer": false
+}

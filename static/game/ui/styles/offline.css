@@ -1,0 +1,32 @@
+#offlineStamp {
+  user-select: none;
+  z-index: 1;
+  position: absolute;
+  bottom: 0px;
+  right: 5px;
+  width: 200px;
+  height: 40px;
+  border-top: solid 1px rgba(255,255,255,8%);
+  background: rgba(255,255,255,10%);
+  backdrop-filter: blur(5px);
+  border-radius: 10px 10px 0px 0px;
+  display: flex;
+  font-size: 7px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  color: #ffffff;
+  pointer-events: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  transform: translateY(50px);
+}
+
+#trying-toReconnect {
+  position: relative;
+  height: 14px;
+  transform: rotate(0deg);
+  animation: loading 0.5s infinite;
+  animation-timing-function: linear;
+}

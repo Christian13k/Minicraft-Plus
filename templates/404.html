@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Minicraft</title>
+    <link rel="icon" href="/static/game/textures/ui/ico.png" type="image/png">
+    <link href="/static/game/ui/styles/loader.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="minicraft-plus" style="display: block;">
+        <div id="loader"></div>
+    </div>
+    <div id="Error" style="width: 100%; height: 100%; position: fixed; background: rgba(0,0,0,30%); backdrop-filter: blur(50px); top: 0; left: 0; z-index: 9999;">
+        <div>
+            <div id="ErrorMessage">
+                <img src="/static/untitled.svg" />
+                <h1>Page not found!</h1>
+                <p>404</p>
+                <button id="ErrorMessage_button" href="//">Home</button>
+                <div>
+                    <span id="loader-textGame_version">v1.46.31.0 Preview</span>
+                    <span id="loader-textReplit">Create by Klenck Studios</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', function () {
+            ErrorMessage.style.opacity = "100";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+#fps-counter {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  z-index: 2;
+  text-align: left;
+  font-size: 10px;
+  font-family: 'Quicksand', sans-serif;
+  color: rgba(255, 255, 255, 50%);
+}
+
+#Login_Background {
+	display: none;
+	opacity: 0;
+	background-color: rgba(0,0,0, 30%);
+	backdrop-filter: blur(20px);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	transition: opacity 0.1s linear;
+	z-index: 9999;
+}
+
+#Login {
+	opacity: 0;
+	background-color: rgba(0,0,0, 100%);
+	backdrop-filter: blur(20px);
+	width: 470px;
+	height: 800px;
+	position: fixed;
+	bottom: 50%;
+	left: 50%;
+	transform: translate(-50%, 50%);
+	border-radius: 10px;
+	font-family: Arial, sans-serif;
+	transition: opacity 0.5s linear, transform 0.3s ease-in-out, bottom 0.3s ease-in-out;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+#Login_text {
+	position: relative;
+	font-size: 16px;
+	text-align: center;
+	color: #ffffff;
+	pointer-events: none;
+	font-family: 'Quicksand', sans-serif;
+}
+
+#Login_loader {
+	position: relative;
+	height: 30px;
+}
+
+#LoginLoad {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+#ErrorMessage {
+  z-index: 9999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  color: #fff;
+  font-family: monospace;
+  transform: translate(-50%, -50%);
+  transition: opacity 3s cubic-bezier(0.33, 0, 0.12, 1);
+  background: rgba(0, 0, 0, 20%);
+  padding: 25px;
+  padding-top: 50px;
+  opacity: 0;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 85%;
+  width: 50%;
+}
+
+#ErrorMessage h1 {
+  text-align: center;
+  color: #fff;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  margin: 0;
+  margin-top: 30px;
+  font-size: 22px;
+}
+
+#ErrorMessage p {
+  text-align: center;
+  color: #d4d4d4;
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+#ErrorMessage img {
+  width: 200px;
+  pointer-events: none;
+  animation: floating 3s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+#ErrorMessage button {
+  top: 25px;
+  height: 50px;
+  width: 150px;
+  background: #3da1ff;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  transition: border 0.1s linear, background 0.3s linear, color 0.3s linear;
+  cursor: pointer;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 20px;
+}
+
+#ErrorMessage button:hover {
+  background: #3da1ff rgba(61, 161, 255, 50%);
+  color: #fff;
+}
+
+
+#loader {
+  z-index: 9998;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background: url('textures/open.jpeg'), #000;
+  background-size: cover;
+  background-position: 50% 50%;
+  filter: blur(0px);
+  opacity: 100;
+  scale: 1;
+  transition: 2s ease-in-out;
+}
+
+#open {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(17, 18, 20, 52%);
+  backdrop-filter: blur(50px);
+  mask-image: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 90%, rgb(0, 0, 0));
+  transition: 0.5s linear;
+}
+
+#loader-textReplit {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2;
+  text-align: right;
+  font-size: 10px;
+  font-family: 'Quicksand', sans-serif;
+  color: rgba(255, 255, 255, 50%);
+}
+
+#loader-textGame_version {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 2;
+  text-align: left;
+  font-size: 10px;
+  font-family: 'Quicksand', sans-serif;
+  color: rgba(255, 255, 255, 50%);
+}
+
+#minicraft-game-icon {
+  position: fixed;
+  pointer-events: none;
+  left: 25%;
+  top: 30%;
+  border-radius: 3px;
+  width: 50%;
+  z-index: 2;
+}
+
+/* #progress-bar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: calc(100% - 20px);
+  height: 3px;
+  z-index: 2;
+  border-radius: 11px;
+  border: solid 4px transparent;
+  margin: 6px;
+  overflow: hidden;
+}
+
+#progress {
+  position: absolute;
+  width: 0;
+  height: 100%;
+  border-radius: 3px;
+  background: #fff;
+  z-index: 1;
+  transition: width 1.3s ease-in-out;
+  animation: loading_2 1.5s infinite;
+  animation-timing-function: linear;
+  left: 0%;
+} */
+
+#loader-grouping {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+#loaderText-grouping {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 100%;
+  top: 70%;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  align-items: center;
+}
+
+#loader-text {
+  position: relative;
+  margin: 0;
+  font-size: 20px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+#loader_textFinished {
+  position: relative;
+  margin: 0;
+  font-size: 15px;
+  font-family: 'Quicksand', sans-serif;
+  color: rgba(255, 255, 255, 80%);
+  pointer-events: none;
+}
+
+#loaderUser-info {
+  width: 100%;
+  height: 100%;
+  transform: translateY(100px);
+  transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+#loader-imageUser {
+  position: absolute;
+  transform: translate(-50%, 0%);
+  left: 50%;
+  bottom: 38px;
+  border-radius: 50%;
+  width: 40px;
+  margin: 0;
+  pointer-events: none;
+  backdrop-filter: blur(50px);
+  display: none;
+}
+
+#loader-textUser {
+  position: fixed;
+  margin: 0;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+  color: rgba(255, 255, 255, 50%);
+  pointer-events: none;
+}
+
+#loader-in {
+  position: relative;
+  height: 32px;
+  transform: rotate(0deg);
+}
+
+@media (max-width: 868px) {
+  #minicraft-game-icon {
+    position: fixed;
+    pointer-events: none;
+    left: 10%;
+    top: 30%;
+    width: 80%;
+    z-index: 2;
+  }
+}
+
+@keyframes loading_2 {
+  0% {
+    width: 0%;
+    left: -50%;
+  }
+
+  50% {
+    width: 40%;
+    left: 30%;
+  }
+
+  100% {
+    width: 5%;
+    left: 150%;
+  }
+}
+
+@keyframes replit-open {
+  0% {
+    right: -100px;
+  }
+
+  20% {
+    right: 10px;
+  }
+
+  50% {
+    right: 10px;
+  }
+
+  80% {
+    right: 10px;
+  }
+
+  100% {
+    right: -100px;
+  }
+}

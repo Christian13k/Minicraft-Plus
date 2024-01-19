@@ -1,0 +1,288 @@
+#user_Panel-loading {
+  position: absolute;
+  background: #232428;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#user_Panel-loading img {
+  width: 30px;
+}
+
+#user_Panel {
+    position: fixed;
+    bottom: 50%;
+    transform: translate(0, 50%);
+    border-radius: 7px 0 0 7px;
+    right: -377px;
+    width: 377px;
+    height: 98%;
+    font-family: Arial, sans-serif;
+    background: #232428;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: center;
+    opacity: 0;
+    transition: opacity 0.2s linear, right 0.2s ease-in-out;
+    overflow: auto;
+    z-index: 2;
+}
+
+#user_Panel-errorImage {
+  position: relative;
+  z-index: -1;
+  height: 100px;
+  pointer-events: none;
+  margin: 0;
+}
+
+#user_Panel-error {
+  position: absolute;
+  z-index: -1;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+#user_Panel-errorText {
+  position: relative;
+  z-index: -1;
+  pointer-events: none;
+  color: #fff;
+  font-size: 15px;
+  margin: 5px;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+}
+
+#blurUser-Panel {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    transition: 0.3s linear;
+    background: rgba(0,0,0,0%);
+    backdrop-filter: blur(10px);
+    z-index: 2;
+}
+
+#user_Panel::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+#user_Panel::-webkit-scrollbar-thumb {
+  height: 56px;
+  border-radius: 8px;
+  border: 7px solid transparent;
+  background-clip: content-box;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+#user_Panel-userImageAndVisibility {
+  position: absolute;
+  height: 110px;
+  width: 110px;
+  z-index: -1;
+  top: 20px;
+  left: 15px;
+  animation: open-user_Panel-userImageAndVisibility 0.5s 1;
+  animation-timing-function: ease-in-out;
+}
+
+#user_Panel-userImage {
+  position: absolute;
+  height: 100px;
+  pointer-events: none;
+  background-color: #232428;
+  border: solid 5px #232428;
+  border-radius: 100%;
+}
+
+#user_Panel-userVisibility {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  bottom: 0px;
+  right: 0;
+  background-color: #23a45a;
+  border: solid 7px #232428;
+  border-radius: 100%;
+}
+
+#user_Panel-userBanner {
+  position: fixed;
+  z-index: -2;
+  width: 100%;
+  height: 85px;
+  background: linear-gradient(to right, #b6c32c,  #6db2cb);
+  animation: open-user_Panel-userBanner 0.5s 1;
+  animation-timing-function: ease-in-out;
+}
+
+#user_Panel-userInfos {
+  position: absolute;
+  z-index: -2;
+  top: 140px;
+  width: calc(377px - 30px);
+  min-height: calc(43px * 2);
+  border-radius: 5px;
+  background-color: #111214;
+  display: flex;
+  flex-direction: column;
+}
+
+#user_Panel-userName {
+  position: relative;
+  color: #fff;
+  font-size: 19px;
+  margin: 0;
+  top: 10px;
+  left: 10px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+}
+
+#user_Panel-userTag {
+  position: relative;
+  color: rgba(255,255,255, 50%);
+  font-size: 15px;
+  margin: 0;
+  top: 10px;
+  left: 10px;
+  font-family: 'Quicksand', sans-serif;
+  text-transform: lowercase;
+  margin-bottom: 10px;
+}
+
+#user_Panel-Line {
+  position: relative;
+  z-index: -2;
+  width: calc(377px - 60px);
+  height: 0.1px;
+  border-bottom: solid 1px rgba(255,255,255, 20%);
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 10px;
+}
+
+#user_Panel-aboutMe {
+  position: relative;
+  color: #fff;
+  font-size: 13px;
+  margin: 0px;
+  top: 10px;
+  left: 10px;
+  font-family: 'Quicksand', sans-serif;
+  text-transform: uppercase;
+}
+
+#user_Panel-userBio {
+  position: relative;
+  color: rgba(255,255,255, 90%);
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  top: 10px;
+  left: 10px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+#user_Panel-button_ChangeAccount {
+  transform: translate(-50%);
+  position: relative;
+  border: none;
+  background: #111214;
+  color: #fff;
+  width: calc(377px - 50px);
+  height: 35px;
+  text-align: left;
+  border-radius: 3px;
+  left: 50%;
+  font-family: 'Quicksand', sans-serif;
+  margin-top: 10px;
+}
+
+#user_Panel-button_ChangeAccount:hover {
+  background: #242529;
+}
+
+#user_Panel-button_Config {
+  transform: translate(-50%);
+  position: relative;
+  border: none;
+  background: #111214;
+  color: #fff;
+  width: calc(377px - 50px);
+  height: 35px;
+  text-align: left;
+  border-radius: 3px;
+  left: 50%;
+  font-family: 'Quicksand', sans-serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#user_Panel-button_Config:hover {
+  background: #242529;
+}
+
+#user_Panel-userBadges {
+  position: absolute;
+  z-index: -2;
+  top: 98px;
+  right: 15px;
+  min-width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #111214;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+#user_Panel-userBadge {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+}
+
+@keyframes open-user_Panel-userBanner {
+  0% {
+    transform: translateY(-85px);
+    opacity: 0;
+  } 100% {
+    transform: translateY(0);
+    opacity: 100;
+  }
+}
+
+@keyframes open-user_Panel-userImageAndVisibility {
+  0% {
+    top: calc(20px + 85px);
+    scale: 0;
+    opacity: 0;
+  } 100% {
+    top: 20px;
+    scale: 1;
+    opacity: 100;
+  }
+}
