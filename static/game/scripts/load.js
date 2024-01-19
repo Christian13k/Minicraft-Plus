@@ -66,7 +66,7 @@ window.addEventListener('offline', function() {
 
   offlineStamp_Text.textContent = "You are offline!";
   offlineStamp.style.transform = 'translateY(0)';
-  trying_toReconnect.src = 'loader.svg';
+    trying_toReconnect.src = '/static/game/ui/styles/textures/loaders/loader.svg';
 });
 window.addEventListener('online', function() {
   var offlineStamp = document.getElementById('offlineStamp');
@@ -210,7 +210,9 @@ window.addEventListener('load', function() {
       loader_in.style.display = "none";
       setTimeout(function() {
         loader.style.display = "none";
-        audio.play();
+          audio.addEventListener('load', function () { 
+              audio.play();
+          });
       }, 2500);
     }, 3000);
   });
