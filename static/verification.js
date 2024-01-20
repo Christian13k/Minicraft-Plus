@@ -28,11 +28,11 @@ var userAgent = navigator.userAgent;
 var unsupportedBrowser_message = "Your browser does not support this website";
 
 if (window !== window.top) {
-  ErrorMessage.innerHTML = ('<img src="iframe.svg">' + '<h1>' + "Are you using iframe?" + '</h1>' + '<p>' + "For a better experience visit the website:" + '</p>' + '<button id="ErrorMessage_button">Open</button>');
+    ErrorMessage.innerHTML = ('<img src="/static/iframe.svg">' + '<h1>' + "Are you using iframe?" + '</h1>' + '<p>' + "For a better experience visit the website:" + '</p>' + '<button id="ErrorMessage_button">Open</button>');
   error.style.display = "block";
 
   ErrorMessage_button.addEventListener('click', function() {
-    window.open('https://minicraft-plus.klenckstudios.repl.co/', '_blank');
+    window.open('', '_blank');
   });
 } else {
   error.style.display = "none";

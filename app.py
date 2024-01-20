@@ -72,6 +72,9 @@ def logout():
     session.pop('user', None)
     return redirect(url_for('home'))
 
+##       ##
+## Users ##
+##       ##
 
 if __name__ == '__main__':
     app.run(port=5000)

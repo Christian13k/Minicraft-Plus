@@ -7,16 +7,16 @@ var user_Panel_userBanner = document.getElementById("user_Panel-userBanner");
 var user_buttonText = document.getElementById("user-buttonText");
 var user_buttonUrl = document.getElementById("user-buttonUrl");
 var user_Panel_userBio = document.getElementById("user_Panel-userBio");
-//var user_buttonId = document.getElementById("user-buttonId");
 var Login_Background = document.getElementById("Login_Background");
+var user_Panel_userVisibility = document.getElementById("user_Panel-userVisibility");
+
 var Login = document.getElementById("Login");
 var user_Panel_button_ChangeAccount = document.getElementById("user_Panel-button_ChangeAccount");
 
 
-//Login_Background.style.display = "block";
-//Login_Background.style.opacity = "100";
-
-//Login.style.opacity = "100";
+//
+// Conectar o usuario
+//
 
 user_Panel_button_ChangeAccount.addEventListener('click', function () {
     window.location.href += "__authlogout";
@@ -41,7 +41,7 @@ const authenticate = async () => {
         user_buttonText.textContent = user.global_name;
 
         var script1 = document.createElement('script');
-        script1.src = 'game/scripts/open_world.js';
+        script1.src = '/static/game/scripts/open_world.js';
         document.head.appendChild(script1);
 
         continueUploading();

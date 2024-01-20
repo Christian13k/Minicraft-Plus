@@ -109,6 +109,7 @@ window.addEventListener('load', function() {
   var script4 = document.createElement('script');
     var script5 = document.createElement('script');
     var script6 = document.createElement('script');
+    var script7 = document.createElement('script');
 
   var loader_text = document.getElementById('loader-text');
   var loader_in = document.getElementById('loader-in');
@@ -116,24 +117,30 @@ window.addEventListener('load', function() {
   loader_text.textContent = "Loading Scripts";
   script1.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
   document.head.appendChild(script1);
-  loader_textFinished.textContent = "0 of 11";
+  loader_textFinished.textContent = "0 of 12";
+
+    script1.addEventListener('load', function () {
+        script2.src = 'https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js';
+        document.head.appendChild(script2);
+        loader_textFinished.textContent = "1 of 12";
+    });
 
   script1.addEventListener('load', function() {
-    script2.src = '/static/game/scripts/save_world.js';
-    document.head.appendChild(script2);
-    loader_textFinished.textContent = "1 of 11";
+      script7.src = '/static/game/scripts/save_world.js';
+      document.head.appendChild(script7);
+    loader_textFinished.textContent = "2 of 12";
   });
 
   script2.addEventListener('load', function() {
     script5.src = '/static/game/scripts/fps.js';
     document.head.appendChild(script5);
-    loader_textFinished.textContent = "2 of 11";
+    loader_textFinished.textContent = "3 of 12";
   });
 
     script5.addEventListener('load', function () {
         script6.src = '/static/game/scripts/sectionChange.js';
         document.head.appendChild(script6);
-        loader_textFinished.textContent = "3 of 11";
+        loader_textFinished.textContent = "4 of 12";
 
     });
 
@@ -141,13 +148,13 @@ window.addEventListener('load', function() {
     script3.src = '/static/game/scripts/user.js';
     loader_text.textContent = "Authenticating";
     document.head.appendChild(script3);
-    loader_textFinished.textContent = "4 of 11";
+    loader_textFinished.textContent = "5 of 12";
   });
 
   script3.addEventListener('load', function() {
     script4.src = '/static/game/scripts/profile.js';
     document.head.appendChild(script4);
-    loader_textFinished.textContent = "5 of 11";
+    loader_textFinished.textContent = "6 of 12";
   });
 
   var style2 = document.createElement('link');
@@ -161,35 +168,35 @@ window.addEventListener('load', function() {
     style2.rel = 'stylesheet';
     style2.type = 'text/css';
     document.head.appendChild(style2);
-    loader_textFinished.textContent = "6 of 11";
+    loader_textFinished.textContent = "7 of 12";
   });
   style2.addEventListener('load', function() {
     style3.href = '/static/game/ui/styles/pause.css';
     style3.rel = 'stylesheet';
     style3.type = 'text/css';
     document.head.appendChild(style3);
-    loader_textFinished.textContent = "7 of 11";
+    loader_textFinished.textContent = "8 of 12";
   });
   style3.addEventListener('load', function() {
     style4.href = '/static/game/ui/styles/login.css';
     style4.rel = 'stylesheet';
     style4.type = 'text/css';
     document.head.appendChild(style4);
-    loader_textFinished.textContent = "8 of 11";
+    loader_textFinished.textContent = "9 of 12";
   });
   style4.addEventListener('load', function() {
     style5.href = '/static/game/ui/styles/profile.css';
     style5.rel = 'stylesheet';
     style5.type = 'text/css';
     document.head.appendChild(style5);
-    loader_textFinished.textContent = "9 of 11";
+    loader_textFinished.textContent = "10 of 12";
   });
   style5.addEventListener('load', function() {
     style6.href = '/static/game/ui/styles/offline.css';
     style6.rel = 'stylesheet';
     style6.type = 'text/css';
     document.head.appendChild(style6);
-    loader_textFinished.textContent = "10 of 11";
+    loader_textFinished.textContent = "11 of 12";
   });
 
   style6.addEventListener('load', function() {

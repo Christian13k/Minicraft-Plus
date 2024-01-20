@@ -97,6 +97,7 @@
 	animation: panorama 60s infinite;
 	animation-timing-function: ease-in-out;
 	overflow: auto;
+	scroll-behavior: smooth;
 	z-index: 0;
 }
 
@@ -263,9 +264,9 @@
 #underneath-menu {
 	position: absolute;
 	right: 0;
-	bottom: calc(0% - 10%);
-	width: calc(100% - 20%);
-	height: 10%;
+	bottom: calc(-180% - 5%);
+	width: 100%;
+	height: 200%;
 	font-family: Arial, sans-serif;
 	background: rgba(0, 0, 0, 10%);
 	backdrop-filter: blur(20px);
@@ -274,6 +275,8 @@
 	flex-wrap: wrap;
 	transition: 0.3s linear;
 	flex-direction: column;
+	mask-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0) 10%);
+	overflow: visible;
 }
 
 #underneath-menu::-webkit-scrollbar {

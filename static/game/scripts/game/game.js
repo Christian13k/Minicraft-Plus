@@ -1,54 +1,68 @@
-const config = {
-  type: Phaser.AUTO,
-  width: 800,
-  height: 600,
-  physics: {
-    default: 'arcade',
-    arcade: {
-      gravity: { y: 300 },
-      debug: false,
-    },
-  },
-  scene: {
-    preload: preload,
-    create: create,
-    update: update,
-  },
-};
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext("2d");
 
-const game = new Phaser.Game(config);
+// Define a posição inicial do jogador
+let playerX = canvas.width / 2;
+let playerY = canvas.height - 30;
 
-function preload() {
-  this.load.image('ground', 'assets/ground.png');
-  this.load.spritesheet('player', 'assets/player.png', {
-    frameWidth: 32,
-    frameHeight: 48,
-  });
+// Define a velocidade do jogador
+let playerSpeed = 5;
+
+// Variáveis para controlar o movimento
+let rightPressed = false;
+let leftPressed = false;
+
+// Adiciona listeners para os eventos de tecla
+document.addEventListener("keydown", keyDownHandler);
+document.addEventListener("keyup", keyUpHandler);
+
+// Função para tratar o evento de pressionar uma tecla
+function keyDownHandler(e) {
+    if (e.key === "Right" || e.key === "ArrowRight") {
+        rightPressed = true;
+    } else if (e.key === "Left" || e.key === "ArrowLeft") {
+        leftPressed = true;
+    }
 }
 
-function create() {
-  this.ground = this.physics.add.staticGroup();
-  for (let i = 0; i < 25; i++) {
-    this.ground.create(i * 32, 550, 'ground').setScale(2).refreshBody();
-  }
-
-  this.player = this.physics.add.sprite(100, 450, 'player');
-  this.player.setBounce(0.2);
-  this.physics.add.collider(this.player, this.ground);
+// Função para tratar o evento de soltar uma tecla
+function keyUpHandler(e) {
+    if (e.key === "Right" || e.key === "ArrowRight") {
+        rightPressed = false;
+    } else if (e.key === "Left" || e.key === "ArrowLeft") {
+        leftPressed = false;
+    }
 }
 
-function update() {
-  const cursors = this.input.keyboard.createCursorKeys();
-
-  if (cursors.left.isDown) {
-    this.player.setVelocityX(-160);
-  } else if (cursors.right.isDown) {
-    this.player.setVelocityX(160);
-  } else {
-    this.player.setVelocityX(0);
-  }
-
-  if (cursors.up.isDown && this.player.body.touching.down) {
-    this.player.setVelocityY(-330);
-  }
+// Função para desenhar o jogador
+function drawPlayer() {
+    ctx.beginPath();
+    ctx.rect(playerX, playerY, 50, 50);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
 }
+
+// Função para atualizar a posição do jogador
+function updatePlayer() {
+    if (rightPressed && playerX < canvas.width - 50) {
+        playerX += playerSpeed;
+    } else if (leftPressed && playerX > 0) {
+        playerX -= playerSpeed;
+    }
+}
+
+// Função principal de desenho e atualização
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Atualiza e desenha o jogador
+    updatePlayer();
+    drawPlayer();
+
+    // Continua o loop de animação
+    requestAnimationFrame(draw);
+}
+
+// Inicia o loop de animação
+draw();

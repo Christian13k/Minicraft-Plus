@@ -2,18 +2,18 @@
 
 const CACHE_NAME = 'nome-do-cache-v1';
 const urlsToCache = [
-  '/untitled.svg',
-  '/loader.svg',
-  '/iframe.svg',
-  '/bot.svg',
-  '/game/ui/styles/loader.css',
-  '/game/ui/styles/offline.css',
-  '/game/ui/styles/textures/open.jpeg',
-  '/game/ui/styles/textures/panorama.jpeg',
-  '/game/textures/ui/minecraft_title.svg',
-  '/game/scripts/load.js',
-  '/game/scripts/user.js',
-  '/game/textures/ui/ico.png'
+  '/static/untitled.svg',
+  '/static/loader.svg',
+  '/static/iframe.svg',
+  '/static/bot.svg',
+  '/static/game/ui/styles/loader.css',
+  '/static/game/ui/styles/offline.css',
+  '/static/game/ui/styles/textures/open.jpeg',
+  '/static/game/ui/styles/textures/panorama.jpeg',
+  '/static/game/textures/ui/minecraft_title.svg',
+  '/static/game/scripts/load.js',
+  '/static/game/scripts/user.js',
+  '/static/game/textures/ui/ico.png'
 ];
 
 self.addEventListener('install', event => {

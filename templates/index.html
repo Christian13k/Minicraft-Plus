@@ -53,7 +53,7 @@
 </style>
 
 <body>
-	<canvas id="canvas" style="display: none;"></canvas>
+	<canvas id="canvas"></canvas>
 
 	<img src="/static/game/ui/styles/textures/open.jpeg" id="loader-img" style="display: none;" />
     <div id="minicraft-plus" style="display: block;">
@@ -76,12 +76,15 @@
         <div>
             <!-- Amigos -->
             <div id="AmigosPanel">
-
+                <h2>Amigos</h2>
+                <ul id="friendsList"></ul>
+                <h2>Amigos Online</h2>
+                <ul id="onlineFriendsList"></ul>
             </div>
             <!-- Play -->
             <div id="title-panorama">
                 <div id="anchor"></div>
-                <img id="loader-in-panorama" src="/static/game/textures/ui/loader.gif" />
+                <img id="loader-in-panorama" src="/static/game\ui/styles/textures/loaders/loaderSlim.svg" />
                 <div id="blur"></div>
 
                 <div id="title-menu">
@@ -101,7 +104,7 @@
                 <div id="blurUser-Panel" style="display: none; backdrop-filter: blur(0px); background: rgba(0, 0, 0, 0);"></div>
                 <div id="user_Panel" style="display: none; opacity: 0; right: -377px;">
                     <div id="user_Panel-error" style="display: none;">
-                        <img id="user_Panel-errorImage" src="untitled.svg">
+                        <img id="user_Panel-errorImage" src="/static/untitled.svg">
                         <span id="user_Panel-errorText">Did not work... :(</span>
                     </div>
 
@@ -174,7 +177,7 @@
                 <div id="loaderText-grouping">
                     <img id="loader-in" src="/static/game/ui/styles/textures/loaders/loader.svg" />
                     <div id="loader-text">Connecting</div>
-                    <div id="loader_textFinished">0 of 11</div>
+                    <div id="loader_textFinished">0 of 12</div>
                 </div>
             </div>
             <div>

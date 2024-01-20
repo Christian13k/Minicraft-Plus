@@ -15,9 +15,9 @@ play_button.addEventListener('click', function () {
   loader_in_panorama.style.display = "block";
   title_menu.style.opacity = "0";
   anchor.scrollIntoView({ behavior: 'smooth' });
-  script.src = 'game/scripts/game/game.js';
+    script.src = '/static/game/scripts/game/game.js';
   document.head.appendChild(script);
-  document.title = "Minicraft Plus";
+  document.title = "Minicraft";
   var audio = document.getElementById("music");
   audio.pause();
   var audio2 = document.getElementById("gui");
